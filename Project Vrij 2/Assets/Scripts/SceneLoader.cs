@@ -5,30 +5,64 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // This lets us make SceneLoader a singleton so we can adres it easily
+    public static SceneLoader Instance;
+
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    // Only load scenes with this function, because it adds the current scene to the loadedScenes stack.
+    public void LoadScene(string name)
     {
-        
+        // add current scene to loadedScenes stack
+        Data.instance.loadedScenes.Push(SceneManager.GetActiveScene().name);
+        // load the next scene
+        SceneManager.LoadScene(name);
     }
+
+    public void LoadPreviousScene()
+    {
+        if (Data.instance.loadedScenes.Count > 0)
+        {
+            // load the top scene of the loadedScenes stack and delete it from the stack.
+            SceneManager.LoadScene(Data.instance.loadedScenes.Pop());
+        }
+        else
+        {
+            Debug.LogError("No previous scene loaded.");
+        }
+    }
+
+    // FUNCTIONS FOR EASE OF USE
 
     public void GoToMainTitle()
     {
-        SceneManager.LoadScene("MainTitle");
+        LoadScene("MainTitle");
     }
 
     public void GoToPinBoard()
     {
-        SceneManager.LoadScene("PinBoard");
+        LoadScene("PinBoard");
     }
 
     public void GoToFoyer()
     {
-        SceneManager.LoadScene("Foyer");
+        LoadScene("Foyer");
     }
+
+    public void GoToSettings()
+    {
+        // go to settings scene
+        Debug.LogWarning("There is no Settings scene to go to!");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quitting game");
+    }
+
+    
 }

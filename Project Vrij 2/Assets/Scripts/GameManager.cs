@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // This lets us make GameManager a singleton so we can adres it easily
     static public GameManager Instance;
 
     private void Awake()
