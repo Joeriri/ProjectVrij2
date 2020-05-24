@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnStartGameButtonPressed()
     {
-        SceneLoader.Instance.GoToFoyer();
+        SceneLoader.Instance.GoToPinBoard();
     }
 
     public void OnSettingsButtonPressed()

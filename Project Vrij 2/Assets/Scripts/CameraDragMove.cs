@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 // source for camera dragging: https://forum.unity.com/threads/click-drag-camera-movement.39513/#post-1939243
 // source for camera bounds, kinda: https://forum.unity.com/threads/click-drag-camera-movement.39513/#post-2968916
@@ -8,10 +10,17 @@ using UnityEngine;
 
 public class CameraDragMove : MonoBehaviour
 {
+    [Header("Canvas")]
+    public GraphicRaycaster graphicRaycaster;
+    public EventSystem eventSystem;
+    PointerEventData pointerEventData;
+
+    [Header("Dragging")]
+    public BoxCollider2D CameraClampBox;
     private Vector3 originalCameraPos;
     private Vector3 origin;
     private Vector3 difference;
-    private bool Drag = false;
+    private bool drag = false;
 
     [Header("Zooming")]
     [SerializeField] private float zoomSpeed = 3f;
@@ -20,8 +29,6 @@ public class CameraDragMove : MonoBehaviour
     [SerializeField] private float smoothing = 1f;
     private float targetZoom;
     private float zoomVelocity;
-
-    public BoxCollider2D CameraClampBox;
 
     void Start()
     {
@@ -33,33 +40,56 @@ public class CameraDragMove : MonoBehaviour
     {
         // DRAGGING
 
+        // mouse button is pressed
+        if (Input.GetMouseButtonDown(0))
+        {
+            // shoot a ray to check if we are not clicking anything else
+            Vector3 screenPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(screenPos, Vector3.zero);
+
+            if (!hit && !MouseIsOverUI())
+            {
+                if (drag == false)
+                {
+                    drag = true;
+                    origin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                    MouseCursor.Instance.SetCursor("hold");
+                }
+            }
+        }
+
+        // mouse button is down
         if (Input.GetMouseButton(0))
         {
             difference = (Camera.main.ScreenToWorldPoint(Input.mousePosition)) - Camera.main.transform.position;
-            if (Drag == false)
-            {
-                Drag = true;
-                origin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            }
-        }
-        else
-        {
-            Drag = false;
         }
 
-        if (Drag == true)
+        // mouse button is released
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (drag)
+            {
+                drag = false;
+
+                MouseCursor.Instance.SetCursor("point");
+            }
+        }
+
+        if (drag == true)
         {
             Vector3 targetPosition = origin - difference;
             Camera.main.transform.position = ClampCameraPosition(targetPosition);
-            
         }
 
         // ZOOMING
+
         float scrollData;
         scrollData = Input.GetAxis("Mouse ScrollWheel");
 
         targetZoom -= scrollData * zoomSpeed;
         targetZoom = Mathf.Clamp(targetZoom, minScreenSize, maxScreenSize);
+
         Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, targetZoom, ref zoomVelocity, smoothing);
         Camera.main.transform.position = ClampCameraPosition(Camera.main.transform.position);
 
@@ -72,17 +102,34 @@ public class CameraDragMove : MonoBehaviour
 
     Vector3 ClampCameraPosition(Vector3 targetPosition)
     {
+        // get extends of camera size
         float vertExtent = Camera.main.orthographicSize;
         float horizExtent = vertExtent * Screen.width / Screen.height;
 
-        float minX = CameraClampBox.bounds.min.x + horizExtent;
-        float maxX = CameraClampBox.bounds.max.x - horizExtent;
-        float minY = CameraClampBox.bounds.min.y + vertExtent;
-        float maxY = CameraClampBox.bounds.max.y - vertExtent;
+        return BoardBounds.Instance.ClampInBounds(targetPosition, new Vector3(horizExtent, vertExtent, 0f));
+    }
 
-        Vector3 clampedPosition = new Vector3(Mathf.Clamp(targetPosition.x, minX, maxX), Mathf.Clamp(targetPosition.y, minY, maxY), targetPosition.z);
+    bool MouseIsOverUI()
+    {
+        bool mouseIsOverUI = false;
 
-        return clampedPosition;
+        // Set up the new Pointer Event
+        pointerEventData = new PointerEventData(eventSystem);
+        //Set the Pointer Event Position to that of the mouse position
+        pointerEventData.position = Input.mousePosition;
+
+        //Create a list of Raycast Results
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        //Raycast using the Graphics Raycaster and mouse click position
+        graphicRaycaster.Raycast(pointerEventData, results);
+
+        if (results.Count > 0)
+        {
+            mouseIsOverUI = true;
+        }
+
+        return mouseIsOverUI;
     }
 
     private void OnDrawGizmos()

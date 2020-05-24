@@ -17,8 +17,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Clues
+  - Pins
   - 
   - 
   - 
@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1119487217
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Clues
+    uniqueID: 3265993173
+    locked: 0
+  - name: Pins
+    uniqueID: 999950477
+    locked: 0
+  - name: Cursor
+    uniqueID: 1218139621
     locked: 0
