@@ -34,17 +34,19 @@ public class PinManager : MonoBehaviour
 
     public Pin CreatePin()
     {
+        // create a new pin at mouse position
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos = new Vector3(mousePos.x, mousePos.y, 0f);
         GameObject newPinObject = Instantiate(pinPrefab, mousePos, Quaternion.Euler(Vector3.zero));
         newPinObject.layer = LayerMask.NameToLayer("Pins");
+        // get Pin script and add to pin list
         Pin newPin = newPinObject.GetComponent<Pin>();
         pins.Add(newPin);
-        
+        // disable line renderer and and set variables
         newPin.GetComponent<LineRenderer>().enabled = false;
         newPin.dragged = true;
         newPin.interactable = true;
-
+        // return
         return newPin;
     }
 

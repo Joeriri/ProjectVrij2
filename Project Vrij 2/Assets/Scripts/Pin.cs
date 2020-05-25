@@ -53,6 +53,7 @@ public class Pin : MonoBehaviour
 
     private void OnMouseUp()
     {
+        // pin must be interactable
         if (interactable)
         {
             //check if this is the pin we are dragging

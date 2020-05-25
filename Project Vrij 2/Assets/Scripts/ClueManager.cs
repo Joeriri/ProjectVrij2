@@ -72,17 +72,22 @@ public class ClueManager : MonoBehaviour
 
     public void OpenItemViewer(Clue clue)
     {
+        // set item viewer active and set sprite
         itemViewer.SetActive(true);
         itemViewImage.sprite = clue.GetComponent<SpriteRenderer>().sprite;
         itemViewImage.SetNativeSize();
+        // start fade-in animation
         itemViewer.GetComponent<Animator>().Play("FadeIn");
+        // de-activate clues and pins
         SetClueState(Clue.ClueStates.Frozen);
         PinManager.Instance.SetPinsInteractable(false);
     }
 
     public void CloseItemViewer()
     {
+        // de-active item viewer
         itemViewer.SetActive(false);
+        // activate clues and pins
         SetClueState(Clue.ClueStates.Organize);
         PinManager.Instance.SetPinsInteractable(true);
     }
