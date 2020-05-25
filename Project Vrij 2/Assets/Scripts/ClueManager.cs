@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClueManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class ClueManager : MonoBehaviour
 
     [Header("Organizing")]
     public float minDistanceBeforeDrag = 5f;
+    public GameObject itemViewer;
+    public Image itemViewImage;
 
     [Header("Pinning")]
     //public GameObject pinPrefab;
@@ -37,20 +40,20 @@ public class ClueManager : MonoBehaviour
         
     }
 
-    public void PinButtonPressed()
-    {
-        foreach(Clue clue in allClues)
-        {
-            if (clue.state == Clue.ClueStates.Organize)
-            {
-                clue.state = Clue.ClueStates.Pin;
-            }
-            else if (clue.state == Clue.ClueStates.Pin)
-            {
-                clue.state = Clue.ClueStates.Organize;
-            }
-        }
-    }
+    //public void PinButtonPressed()
+    //{
+    //    foreach(Clue clue in allClues)
+    //    {
+    //        if (clue.state == Clue.ClueStates.Organize)
+    //        {
+    //            clue.state = Clue.ClueStates.Pin;
+    //        }
+    //        else if (clue.state == Clue.ClueStates.Pin)
+    //        {
+    //            clue.state = Clue.ClueStates.Organize;
+    //        }
+    //    }
+    //}
 
     public void SortCluesAlongZ()
     {
@@ -64,6 +67,31 @@ public class ClueManager : MonoBehaviour
             {
                 tempPin.transform.position = new Vector3(tempPin.transform.position.x, tempPin.transform.position.y, 0f);
             }
+        }
+    }
+
+    public void OpenItemViewer(Clue clue)
+    {
+        itemViewer.SetActive(true);
+        itemViewImage.sprite = clue.GetComponent<SpriteRenderer>().sprite;
+        itemViewImage.SetNativeSize();
+        itemViewer.GetComponent<Animator>().Play("FadeIn");
+        SetClueState(Clue.ClueStates.Frozen);
+        PinManager.Instance.SetPinsInteractable(false);
+    }
+
+    public void CloseItemViewer()
+    {
+        itemViewer.SetActive(false);
+        SetClueState(Clue.ClueStates.Organize);
+        PinManager.Instance.SetPinsInteractable(true);
+    }
+
+    public void SetClueState(Clue.ClueStates newState)
+    {
+        foreach (Clue everyClue in allClues)
+        {
+            everyClue.state = newState;
         }
     }
 }

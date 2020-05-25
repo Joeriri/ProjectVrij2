@@ -137,10 +137,11 @@ public class Clue : MonoBehaviour
         if (!dragging)
         {
             // when the mouse button is released and we weren't dragging, we have been clicked!
-            Debug.Log("clicked");
+            ClueManager.Instance.OpenItemViewer(this);
         }
 
         dragging = false;
+        MouseCursor.Instance.SetCursor("point");
     }
 
     void OnOrganizeDrag()

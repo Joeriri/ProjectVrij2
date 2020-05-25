@@ -25,6 +25,4 @@ public class Data
     // This stack keeps track of all the scenes the player has been in, so we can go back to previous scenes.
     // Source: https://answers.unity.com/questions/1617291/how-i-can-open-a-previous-scene-with-button-back.html
     public Stack<string> loadedScenes = new Stack<string>();
-
-    //public List<Clue> clueSortation = new List<Clue>();
 }

@@ -6,6 +6,7 @@ public class PinManager : MonoBehaviour
 {
     public GameObject pinPrefab;
     public LayerMask pinsLayer;
+    public List<Pin> pins;
 
     public static PinManager Instance;
 
@@ -38,10 +39,26 @@ public class PinManager : MonoBehaviour
         GameObject newPinObject = Instantiate(pinPrefab, mousePos, Quaternion.Euler(Vector3.zero));
         newPinObject.layer = LayerMask.NameToLayer("Pins");
         Pin newPin = newPinObject.GetComponent<Pin>();
+        pins.Add(newPin);
         
         newPin.GetComponent<LineRenderer>().enabled = false;
         newPin.dragged = true;
+        newPin.interactable = true;
 
         return newPin;
+    }
+
+    public void DeletePin(Pin trashPin)
+    {
+        pins.Remove(trashPin);
+        Destroy(trashPin.gameObject);
+    }
+
+    public void SetPinsInteractable(bool interactable)
+    {
+        foreach (Pin everyPin in pins)
+        {
+            everyPin.interactable = interactable;
+        }
     }
 }
