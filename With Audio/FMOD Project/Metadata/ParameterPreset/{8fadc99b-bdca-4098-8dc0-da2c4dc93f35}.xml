@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{8fadc99b-bdca-4098-8dc0-da2c4dc93f35}">
+		<property name="name">
+			<value>Character Selector</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0e39b9fa-aa35-4e35-87f1-c0a6a60a2356}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{bfb61d65-a900-4a59-8ee7-f081370c6dec}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{bfb61d65-a900-4a59-8ee7-f081370c6dec}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>7</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Value A</value>
+			<value>Value B</value>
+			<value>Value C</value>
+			<value>Value D</value>
+			<value>Value E</value>
+			<value>Value F</value>
+			<value>Value G</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

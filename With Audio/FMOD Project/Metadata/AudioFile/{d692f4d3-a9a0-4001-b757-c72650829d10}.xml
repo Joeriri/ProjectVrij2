@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{d692f4d3-a9a0-4001-b757-c72650829d10}">
+		<property name="assetPath">
+			<value>Twins M_5.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.76392290249433104</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{55ff583b-3b13-4893-aeab-cd9089037dc6}</destination>
+		</relationship>
+	</object>
+</objects>
