@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class ClueManager : MonoBehaviour
 {
@@ -34,10 +35,10 @@ public class ClueManager : MonoBehaviour
         // sorteer alle clues
         SortCluesAlongZ();
     }
-    
+
     void Update()
     {
-        
+
     }
 
     //public void PinButtonPressed()
@@ -90,6 +91,7 @@ public class ClueManager : MonoBehaviour
         // activate clues and pins
         SetClueState(Clue.ClueStates.Organize);
         PinManager.Instance.SetPinsInteractable(true);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Clue Put Down");
     }
 
     public void SetClueState(Clue.ClueStates newState)

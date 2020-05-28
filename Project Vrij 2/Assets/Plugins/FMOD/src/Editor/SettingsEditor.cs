@@ -624,6 +624,8 @@ namespace FMODUnity
             EditorGUILayout.LabelField("<b>Initialization</b>", style);
             EditorGUI.indentLevel++;
 
+            settings.EnableMemoryTracking = EditorGUILayout.Toggle("Enable Memory Tracking", settings.EnableMemoryTracking);
+
             settings.BankLoadType = (BankLoadType)EditorGUILayout.EnumPopup("Load Banks", settings.BankLoadType);
             switch (settings.BankLoadType)
             {

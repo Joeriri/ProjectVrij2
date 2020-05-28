@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 [RequireComponent(typeof(LineRenderer))]
 public class Pin : MonoBehaviour
@@ -17,12 +18,12 @@ public class Pin : MonoBehaviour
         lr = GetComponent<LineRenderer>();
         pinManager = FindObjectOfType<PinManager>();
     }
-    
+
     void Start()
     {
-        
+
     }
-    
+
     void Update()
     {
         // als dit de boss pin is
@@ -43,12 +44,12 @@ public class Pin : MonoBehaviour
 
     private void OnMouseDown()
     {
-        
+
     }
 
     private void OnMouseUpAsButton()
     {
-        
+
     }
 
     private void OnMouseUp()
@@ -80,6 +81,7 @@ public class Pin : MonoBehaviour
                         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
                         connectedPin = newPin;
                         lr.enabled = true;
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/Pin");
                         // configure new pin
                         newPin.connectedPin = this;
                     }
@@ -89,6 +91,7 @@ public class Pin : MonoBehaviour
                         dragged = false;
                         transform.parent = clickedClue.transform;
                         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/Pin");
 
                         // check if this is the same clue as the first pin
                         if (transform.parent == connectedPin.transform.parent)
