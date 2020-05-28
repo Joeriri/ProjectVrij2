@@ -64,8 +64,8 @@ public class Clue : MonoBehaviour
             case ClueStates.Organize:
                 OnOrganizeMouseDown();
                 break;
-            case ClueStates.Pin:
-                OnPinMouseDown();
+            case ClueStates.Select:
+                OnSelectMouseDown();
                 break;
             case ClueStates.Frozen:
                 break;
@@ -79,8 +79,8 @@ public class Clue : MonoBehaviour
             case ClueStates.Organize:
                 OnOrganizeMouseUp();
                 break;
-            case ClueStates.Pin:
-                OnPinMouseUp();
+            case ClueStates.Select:
+                OnSelectMouseUp();
                 break;
             case ClueStates.Frozen:
                 break;
@@ -94,8 +94,8 @@ public class Clue : MonoBehaviour
             case ClueStates.Organize:
                 OnOrganizeClicked();
                 break;
-            case ClueStates.Pin:
-                OnPinClicked();
+            case ClueStates.Select:
+                OnSelectClicked();
                 break;
             case ClueStates.Frozen:
                 break;
@@ -109,7 +109,7 @@ public class Clue : MonoBehaviour
             case ClueStates.Organize:
                 OnOrganizeDrag();
                 break;
-            case ClueStates.Pin:
+            case ClueStates.Select:
                 break;
             case ClueStates.Frozen:
                 break;
@@ -191,6 +191,25 @@ public class Clue : MonoBehaviour
     }
 
     void OnPinClicked()
+    {
+
+    }
+
+    #endregion
+
+    #region Select State
+
+    void OnSelectMouseDown()
+    {
+
+    }
+
+    void OnSelectMouseUp()
+    {
+
+    }
+
+    void OnSelectClicked()
     {
 
     }
