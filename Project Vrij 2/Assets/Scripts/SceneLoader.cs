@@ -52,6 +52,11 @@ public class SceneLoader : MonoBehaviour
         LoadScene("Foyer");
     }
 
+    public void GoToEnding()
+    {
+        LoadScene("Ending");
+    }
+
     public void GoToSettings()
     {
         // go to settings scene

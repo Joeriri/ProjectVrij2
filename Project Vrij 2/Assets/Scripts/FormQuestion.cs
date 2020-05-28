@@ -7,17 +7,16 @@ public class FormQuestion : MonoBehaviour
 {
     [Header("References")]
     public Text questionText;
-
-    [Header("Don't touch these")]
-    public string question;
-    public Clue[] clueAnswers;
-
-    public List<Clue> selectedEvidence;
+    public Image solveStateImage;
+    
+    [Header("Other")]
+    public CaseQuestion questionInfo;
+    //Clue[] oldSelectedClues;
 
     // Start is called before the first frame update
     void Start()
     {
-        questionText.text = question;
+        questionText.text = questionInfo.question;
     }
 
     // Update is called once per frame
@@ -29,10 +28,60 @@ public class FormQuestion : MonoBehaviour
     public void OnQuestionButtonClicked()
     {
         FormManager.Instance.EnterSelectMode();
+        FormManager.Instance.currentQuestion = this;
+        //oldSelectedClues = questionInfo.selectedEvidence.ToArray();
     }
 
-    void CheckAnswer()
+    public void OnNewEvidenceSelected()
     {
+        questionInfo.solveState = CaseQuestion.SolveStates.Pending;
+        solveStateImage.color = Color.yellow;
+    }
 
+    public void CheckAnswer()
+    {
+        // check if the selected evidence list is longer or shorter than the correct answers array.
+        if (questionInfo.selectedEvidence.Count != questionInfo.clueAnswers.Length)
+        {
+            // the player selected too much or too little evidence
+            FailQuestion();
+        }
+        else
+        {
+            // the player selected the rigth amount of evidence, but is it correct?
+            int CorrectEvidenceCounter = 0;
+
+            // for each clue in the selected evidence list, check if the same clue is in the correct answers array.
+            foreach (Clue possibleEvidence in questionInfo.selectedEvidence)
+            {
+                foreach(Clue correctAnswer in questionInfo.clueAnswers)
+                {
+                    if (possibleEvidence == correctAnswer) CorrectEvidenceCounter++;
+                }
+            }
+
+            if (CorrectEvidenceCounter == questionInfo.clueAnswers.Length)
+            {
+                // the player selected the right clues!
+                SolveQuestion();
+            }
+            else
+            {
+                // the player selected the wrong clues
+                FailQuestion();
+            }
+        }
+    }
+
+    void FailQuestion()
+    {
+        questionInfo.solveState = CaseQuestion.SolveStates.Wrong;
+        solveStateImage.color = Color.red;
+    }
+
+    void SolveQuestion()
+    {
+        questionInfo.solveState = CaseQuestion.SolveStates.Solved;
+        solveStateImage.color = Color.green;
     }
 }

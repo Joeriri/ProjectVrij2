@@ -12,13 +12,15 @@ public class Pin : MonoBehaviour
     public bool interactable;
     LineRenderer lr;
     PinManager pinManager;
-    public SpriteRenderer thread;
+    public SpriteRenderer threadSprite;
+    public Thread thread;
 
     private void Awake()
     {
         lr = GetComponent<LineRenderer>();
         pinManager = FindObjectOfType<PinManager>();
-        thread = transform.Find("Thread").GetComponentInChildren<SpriteRenderer>();
+        thread = GetComponentInChildren<Thread>();
+        threadSprite = thread.GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -28,6 +30,13 @@ public class Pin : MonoBehaviour
 
     void Update()
     {
+        if (dragged)
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos = new Vector3(mousePos.x, mousePos.y, 0f);
+            transform.position = mousePos;
+        }
+
         // als dit de boss pin is
         if (isBossPin)
         {
@@ -35,15 +44,8 @@ public class Pin : MonoBehaviour
             //lr.SetPosition(0, transform.position);
             //lr.SetPosition(1, connectedPin.transform.position);
             float angle = Mathf.Atan2(connectedPin.transform.position.y - transform.position.y, connectedPin.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
-            thread.transform.rotation = Quaternion.Euler(0, 0, angle);
-            thread.size = new Vector2(Vector2.Distance(transform.position, connectedPin.transform.position), 1f);
-        }
-
-        if (dragged)
-        {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos = new Vector3(mousePos.x, mousePos.y, 0f);
-            transform.position = mousePos;
+            threadSprite.transform.rotation = Quaternion.Euler(0, 0, angle);
+            threadSprite.size = new Vector2(Vector2.Distance(transform.position, connectedPin.transform.position), 0.5f);
         }
     }
 
@@ -86,7 +88,7 @@ public class Pin : MonoBehaviour
                         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
                         connectedPin = newPin;
                         ////lr.enabled = true;
-                        thread.enabled = true;
+                        thread.gameObject.SetActive(true);
                         // configure new pin
                         newPin.connectedPin = this;
 
@@ -110,6 +112,18 @@ public class Pin : MonoBehaviour
                         // play sound
                         FMODUnity.RuntimeManager.PlayOneShot("event:/Pin");
                     }
+
+                    // once placed, save the clue inside the thread
+                    if (isBossPin)
+                    {
+                        // save clue inside thread
+                        thread.firstClue = clickedClue;
+                    }
+                    else
+                    {
+                        // save clue inside thread of boss pin
+                        connectedPin.thread.secondClue = clickedClue;
+                    }
                 }
             }
             else
@@ -117,6 +131,16 @@ public class Pin : MonoBehaviour
                 // if the pin is not dragged, pick it up!
                 dragged = true;
                 transform.parent = null;
+
+                // if a pin is being replaced and the thread between the pins was selected as evidence, we want to remove the clues of that thread from the selected evidence.
+                if (isBossPin)
+                {
+                    if (thread.selectedAsEvidence) thread.DeselectThreadAsEvidence();
+                }
+                else
+                {
+                    if (connectedPin.thread.selectedAsEvidence) connectedPin.thread.DeselectThreadAsEvidence();
+                }
             }
         }
     }

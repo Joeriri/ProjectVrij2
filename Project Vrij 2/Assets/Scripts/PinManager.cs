@@ -42,9 +42,11 @@ public class PinManager : MonoBehaviour
         // get Pin script and add to pin list
         Pin newPin = newPinObject.GetComponent<Pin>();
         pins.Add(newPin);
-        // disable line renderer and and set variables
+        // disable thread
         ////newPin.GetComponent<LineRenderer>().enabled = false;
-        newPin.thread.enabled = false;
+        newPin.thread.SetThreadInteractable(false);
+        newPin.thread.gameObject.SetActive(false);
+        // set variables
         newPin.dragged = true;
         newPin.interactable = true;
         // return
@@ -53,7 +55,9 @@ public class PinManager : MonoBehaviour
 
     public void DeletePin(Pin trashPin)
     {
+        // remove pin from the pin list
         pins.Remove(trashPin);
+        // destroy pin
         Destroy(trashPin.gameObject);
     }
 
@@ -62,6 +66,14 @@ public class PinManager : MonoBehaviour
         foreach (Pin everyPin in pins)
         {
             everyPin.interactable = interactable;
+        }
+    }
+
+    public void SetThreadsInteractable(bool interactable)
+    {
+        foreach(Pin everyPin in pins)
+        {
+            everyPin.thread.SetThreadInteractable(interactable);
         }
     }
 }

@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/PinBoard.unity
     guid: 4380d6e3e60ea304a80f7f4590d1e119
   - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 61ca3c4ee8701ee45bd96bf1fa7a3fa0
+  - enabled: 0
     path: Assets/Scenes/Foyer.unity
     guid: c3e3e6da90f1ba34e839386cedcffbdf
   m_configObjects: {}
