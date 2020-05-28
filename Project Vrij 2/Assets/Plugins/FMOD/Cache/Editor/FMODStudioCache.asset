@@ -105,6 +105,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-3140989029974713365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Project/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637263068657512174
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-2227719353084831171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 4450629241450280389}
-  - {fileID: -4292336807805342669}
+  - {fileID: -3140989029974713365}
   EditorEvents:
   - {fileID: 906716767657403811}
   - {fileID: 7613142212667531872}
@@ -180,10 +198,10 @@ MonoBehaviour:
   - {fileID: 362196006892012130}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -4292336807805342669}
+  - {fileID: -3140989029974713365}
   StringsBanks:
   - {fileID: 4450629241450280389}
-  stringsBankWriteTime: 637263044040000000
+  stringsBankWriteTime: 637263068657532139
   cacheVersion: 3
 --- !u!114 &217637091333228980
 MonoBehaviour:
@@ -218,7 +236,7 @@ MonoBehaviour:
   Path: event:/In Game Music
   guid: 9687162b308ab241b04a15057f7709b8
   Banks:
-  - {fileID: -4292336807805342669}
+  - {fileID: -3140989029974713365}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -259,7 +277,7 @@ MonoBehaviour:
   Path: event:/Clue
   guid: 278e1ad6a43189499cc644d6038db07c
   Banks:
-  - {fileID: -4292336807805342669}
+  - {fileID: -3140989029974713365}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -352,7 +370,7 @@ MonoBehaviour:
   Path: event:/Clue Put Down
   guid: fec1c23bdbc9f142891d12a2a5d7334a
   Banks:
-  - {fileID: -4292336807805342669}
+  - {fileID: -3140989029974713365}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -410,7 +428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: FMOD Project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637263044040000000
+  lastModified: 637263068657532139
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -542,7 +560,7 @@ MonoBehaviour:
   Path: event:/Pin
   guid: a6c2209c1f833b41beb30c7f6f365cbc
   Banks:
-  - {fileID: -4292336807805342669}
+  - {fileID: -3140989029974713365}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1

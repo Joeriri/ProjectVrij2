@@ -9,9 +9,7 @@ public class Clue : MonoBehaviour
     public enum ClueStates
     {
         Organize,
-        Pin,
-        Frozen,
-        Select
+        Frozen
     }
     public ClueStates state;
 
@@ -64,9 +62,6 @@ public class Clue : MonoBehaviour
             case ClueStates.Organize:
                 OnOrganizeMouseDown();
                 break;
-            case ClueStates.Select:
-                OnSelectMouseDown();
-                break;
             case ClueStates.Frozen:
                 break;
         }
@@ -78,9 +73,6 @@ public class Clue : MonoBehaviour
         {
             case ClueStates.Organize:
                 OnOrganizeMouseUp();
-                break;
-            case ClueStates.Select:
-                OnSelectMouseUp();
                 break;
             case ClueStates.Frozen:
                 break;
@@ -94,9 +86,6 @@ public class Clue : MonoBehaviour
             case ClueStates.Organize:
                 OnOrganizeClicked();
                 break;
-            case ClueStates.Select:
-                OnSelectClicked();
-                break;
             case ClueStates.Frozen:
                 break;
         }
@@ -108,8 +97,6 @@ public class Clue : MonoBehaviour
         {
             case ClueStates.Organize:
                 OnOrganizeDrag();
-                break;
-            case ClueStates.Select:
                 break;
             case ClueStates.Frozen:
                 break;
@@ -174,44 +161,6 @@ public class Clue : MonoBehaviour
         ClueManager.Instance.clueSortation.Remove(this);
         ClueManager.Instance.clueSortation.Add(this);
         ClueManager.Instance.SortCluesAlongZ();
-    }
-
-    #endregion
-
-    #region Pin State Functions
-
-    void OnPinMouseDown()
-    {
-
-    }
-
-    void OnPinMouseUp()
-    {
-
-    }
-
-    void OnPinClicked()
-    {
-
-    }
-
-    #endregion
-
-    #region Select State
-
-    void OnSelectMouseDown()
-    {
-
-    }
-
-    void OnSelectMouseUp()
-    {
-
-    }
-
-    void OnSelectClicked()
-    {
-
     }
 
     #endregion

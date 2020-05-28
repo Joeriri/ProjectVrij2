@@ -91,7 +91,7 @@ public class FormManager : MonoBehaviour
         // show selection header
         selectionHeader.SetActive(true);
         // activate clues, pins, threads and camera navigation. Set clue state to Select
-        ClueManager.Instance.SetClueState(Clue.ClueStates.Select);
+        ClueManager.Instance.SetClueState(Clue.ClueStates.Frozen);
         PinManager.Instance.SetThreadsInteractable(true);
         Camera.main.GetComponent<CameraDragMove>().canNavigate = true;
     }
