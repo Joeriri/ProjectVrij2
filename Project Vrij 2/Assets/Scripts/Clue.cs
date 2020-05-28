@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Clue : MonoBehaviour
 {
@@ -41,19 +42,19 @@ public class Clue : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     #region Mouse Actions
 
     private void OnMouseEnter()
     {
-        
+
     }
 
     private void OnMouseExit()
     {
-        
+
     }
 
     private void OnMouseDown()
@@ -138,6 +139,7 @@ public class Clue : MonoBehaviour
         {
             // when the mouse button is released and we weren't dragging, we have been clicked!
             ClueManager.Instance.OpenItemViewer(this);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Clue");
         }
 
         dragging = false;

@@ -362,7 +362,7 @@ namespace FMODUnity
             #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
                 string pluginFileName = pluginName + ".bundle";
             #elif UNITY_PS4
-                string pluginFileName = pluginName + ".prx";
+                string pluginFileName = "lib" + pluginName + ".prx";
             #elif UNITY_ANDROID || UNITY_STANDALONE_LINUX
                 string pluginFileName = "lib" + pluginName + ".so";
             #elif UNITY_WEBGL
