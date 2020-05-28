@@ -43,7 +43,8 @@ public class PinManager : MonoBehaviour
         Pin newPin = newPinObject.GetComponent<Pin>();
         pins.Add(newPin);
         // disable line renderer and and set variables
-        newPin.GetComponent<LineRenderer>().enabled = false;
+        ////newPin.GetComponent<LineRenderer>().enabled = false;
+        newPin.thread.enabled = false;
         newPin.dragged = true;
         newPin.interactable = true;
         // return

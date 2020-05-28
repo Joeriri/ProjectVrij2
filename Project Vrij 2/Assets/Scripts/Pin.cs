@@ -12,11 +12,13 @@ public class Pin : MonoBehaviour
     public bool interactable;
     LineRenderer lr;
     PinManager pinManager;
+    public SpriteRenderer thread;
 
     private void Awake()
     {
         lr = GetComponent<LineRenderer>();
         pinManager = FindObjectOfType<PinManager>();
+        thread = transform.Find("Thread").GetComponentInChildren<SpriteRenderer>();
     }
 
     void Start()
@@ -30,8 +32,11 @@ public class Pin : MonoBehaviour
         if (isBossPin)
         {
             // zet de lijn van deze transform naar de transform van de connected pin
-            lr.SetPosition(0, transform.position);
-            lr.SetPosition(1, connectedPin.transform.position);
+            //lr.SetPosition(0, transform.position);
+            //lr.SetPosition(1, connectedPin.transform.position);
+            float angle = Mathf.Atan2(connectedPin.transform.position.y - transform.position.y, connectedPin.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
+            thread.transform.rotation = Quaternion.Euler(0, 0, angle);
+            thread.size = new Vector2(Vector2.Distance(transform.position, connectedPin.transform.position), 1f);
         }
 
         if (dragged)
@@ -80,10 +85,13 @@ public class Pin : MonoBehaviour
                         transform.parent = clickedClue.transform;
                         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
                         connectedPin = newPin;
-                        lr.enabled = true;
-                        FMODUnity.RuntimeManager.PlayOneShot("event:/Pin");
+                        ////lr.enabled = true;
+                        thread.enabled = true;
                         // configure new pin
                         newPin.connectedPin = this;
+
+                        // play sound
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/Pin");
                     }
                     else if (connectedPin != null) // this is the second pin
                     {
@@ -91,7 +99,6 @@ public class Pin : MonoBehaviour
                         dragged = false;
                         transform.parent = clickedClue.transform;
                         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
-                        FMODUnity.RuntimeManager.PlayOneShot("event:/Pin");
 
                         // check if this is the same clue as the first pin
                         if (transform.parent == connectedPin.transform.parent)
@@ -100,6 +107,8 @@ public class Pin : MonoBehaviour
                             PinManager.Instance.DeletePin(connectedPin);
                         }
 
+                        // play sound
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/Pin");
                     }
                 }
             }
