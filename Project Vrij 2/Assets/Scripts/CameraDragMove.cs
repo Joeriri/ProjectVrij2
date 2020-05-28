@@ -10,6 +10,8 @@ using UnityEngine.EventSystems;
 
 public class CameraDragMove : MonoBehaviour
 {
+    public bool canNavigate = true;
+
     [Header("Canvas")]
     public GraphicRaycaster graphicRaycaster;
     public EventSystem eventSystem;
@@ -38,61 +40,63 @@ public class CameraDragMove : MonoBehaviour
 
     void LateUpdate()
     {
-        // DRAGGING
-
-        // mouse button is pressed
-        if (Input.GetMouseButtonDown(0))
+        if (canNavigate)
         {
-            // shoot a ray to check if we are not clicking anything else
-            Vector3 screenPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(screenPos, Vector3.zero);
+            // DRAGGING
 
-            if (!hit && !MouseIsOverUI())
+            // mouse button is pressed
+            if (Input.GetMouseButtonDown(0))
             {
-                if (drag == false)
-                {
-                    drag = true;
-                    origin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                // shoot a ray to check if we are not clicking anything else
+                Vector3 screenPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(screenPos, Vector3.zero);
 
-                    MouseCursor.Instance.SetCursor("hold");
+                if (!hit && !MouseIsOverUI())
+                {
+                    if (drag == false)
+                    {
+                        drag = true;
+                        origin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                        MouseCursor.Instance.SetCursor("hold");
+                    }
                 }
             }
-        }
 
-        // mouse button is down
-        if (Input.GetMouseButton(0))
-        {
-            difference = (Camera.main.ScreenToWorldPoint(Input.mousePosition)) - Camera.main.transform.position;
-        }
-
-        // mouse button is released
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (drag)
+            // mouse button is down
+            if (Input.GetMouseButton(0))
             {
-                drag = false;
-
-                MouseCursor.Instance.SetCursor("point");
+                difference = (Camera.main.ScreenToWorldPoint(Input.mousePosition)) - Camera.main.transform.position;
             }
+
+            // mouse button is released
+            if (Input.GetMouseButtonUp(0))
+            {
+                if (drag)
+                {
+                    drag = false;
+
+                    MouseCursor.Instance.SetCursor("point");
+                }
+            }
+
+            if (drag == true)
+            {
+                Vector3 targetPosition = origin - difference;
+                Camera.main.transform.position = ClampCameraPosition(targetPosition);
+            }
+
+            // ZOOMING
+
+            float scrollData;
+            scrollData = Input.GetAxis("Mouse ScrollWheel");
+
+            targetZoom -= scrollData * zoomSpeed;
+            targetZoom = Mathf.Clamp(targetZoom, minScreenSize, maxScreenSize);
+
+            Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, targetZoom, ref zoomVelocity, smoothing);
+            Camera.main.transform.position = ClampCameraPosition(Camera.main.transform.position);
         }
-
-        if (drag == true)
-        {
-            Vector3 targetPosition = origin - difference;
-            Camera.main.transform.position = ClampCameraPosition(targetPosition);
-        }
-
-        // ZOOMING
-
-        float scrollData;
-        scrollData = Input.GetAxis("Mouse ScrollWheel");
-
-        targetZoom -= scrollData * zoomSpeed;
-        targetZoom = Mathf.Clamp(targetZoom, minScreenSize, maxScreenSize);
-
-        Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, targetZoom, ref zoomVelocity, smoothing);
-        Camera.main.transform.position = ClampCameraPosition(Camera.main.transform.position);
-
     }
 
     public void ResetCameraPosition()

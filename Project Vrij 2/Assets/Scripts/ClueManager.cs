@@ -78,18 +78,20 @@ public class ClueManager : MonoBehaviour
         itemViewImage.SetNativeSize();
         // start fade-in animation
         itemViewer.GetComponent<Animator>().Play("FadeIn");
-        // de-activate clues and pins
+        // de-activate clues, pins and camera navigation
         SetClueState(Clue.ClueStates.Frozen);
         PinManager.Instance.SetPinsInteractable(false);
+        Camera.main.GetComponent<CameraDragMove>().canNavigate = false;
     }
 
     public void CloseItemViewer()
     {
         // de-active item viewer
         itemViewer.SetActive(false);
-        // activate clues and pins
+        // activate clues, pins and camera navigation
         SetClueState(Clue.ClueStates.Organize);
         PinManager.Instance.SetPinsInteractable(true);
+        Camera.main.GetComponent<CameraDragMove>().canNavigate = true;
     }
 
     public void SetClueState(Clue.ClueStates newState)
