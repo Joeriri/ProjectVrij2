@@ -102,6 +102,12 @@
 		<property name="length">
 			<value>0.41006802721088437</value>
 		</property>
+		<property name="voiceStealing">
+			<value>3</value>
+		</property>
+		<property name="maxVoices">
+			<value>1</value>
+		</property>
 		<relationship name="triggerConditions">
 			<destination>{18c80d20-4359-4731-bc36-4408bc79a50a}</destination>
 		</relationship>
@@ -129,6 +135,12 @@
 		</property>
 		<property name="length">
 			<value>0.41006802721088437</value>
+		</property>
+		<property name="voiceStealing">
+			<value>3</value>
+		</property>
+		<property name="maxVoices">
+			<value>1</value>
 		</property>
 		<relationship name="triggerConditions">
 			<destination>{2da6601c-895d-4a33-b774-e0b41b5ef9a7}</destination>
