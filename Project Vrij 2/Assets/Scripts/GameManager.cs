@@ -25,8 +25,4 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void WinGame()
-    {
-        SceneLoader.Instance.GoToEnding();
-    }
 }

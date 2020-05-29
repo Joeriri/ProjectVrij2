@@ -130,7 +130,7 @@ public class FormManager : MonoBehaviour
             if (correctSolveCounter >= formQuestions.Count)
             {
                 // all questions have been solved. Win the game!
-                GameManager.Instance.WinGame();
+                PinBoard.Instance.WinGame();
             }
 
         }
