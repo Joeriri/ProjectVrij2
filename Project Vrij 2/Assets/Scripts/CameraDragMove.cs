@@ -96,6 +96,7 @@ public class CameraDragMove : MonoBehaviour
 
             Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, targetZoom, ref zoomVelocity, smoothing);
             Camera.main.transform.position = ClampCameraPosition(Camera.main.transform.position);
+
         }
     }
 
