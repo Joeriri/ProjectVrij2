@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ButtonBehaviour : MonoBehaviour
+public class ButtonBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
 {
 
     // Start is called before the first frame update
@@ -17,23 +18,28 @@ public class ButtonBehaviour : MonoBehaviour
         
     }
 
-    public void OnCursorEnter()
+    public void OnPointerEnter(PointerEventData eventData)
     {
         MouseCursor.Instance.SetCursor("point");
     }
 
-    public void OnCursorExit()
+    public void OnPointerExit(PointerEventData eventData)
     {
         MouseCursor.Instance.SetCursor("point");
     }
 
-    public void OnCursorDown()
+    public void OnPointerDown(PointerEventData eventData)
     {
         MouseCursor.Instance.SetCursor("click");
     }
 
-    public void OnCursorUp()
+    public void OnPointerUp(PointerEventData eventData)
     {
         MouseCursor.Instance.SetCursor("point");
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+
     }
 }
