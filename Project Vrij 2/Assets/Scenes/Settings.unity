@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 626883371}
   - component: {fileID: 626883370}
   m_Layer: 5
-  m_Name: Quit Button
+  m_Name: Back Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
