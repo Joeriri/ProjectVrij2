@@ -5,10 +5,14 @@ using FMODUnity;
 
 public class MainMenu : MonoBehaviour
 {
+
+  FMOD.Studio.EventInstance Music;
+
     // Start is called before the first frame update
     void Start()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Music");
+        Music = FMODUnity.RuntimeManager.CreateInstance("event:/Music");
+        Music.start();
     }
 
     // Update is called once per frame
@@ -20,6 +24,7 @@ public class MainMenu : MonoBehaviour
     public void OnStartGameButtonPressed()
     {
         SceneLoader.Instance.GoToPinBoard();
+        Music.setParameterByName("Music Marker", 1);
     }
 
     public void OnSettingsButtonPressed()

@@ -2,22 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class SettingsMenu : MonoBehaviour
 {
     public Slider sfxVolumeSlider;
     public Slider musicVolumeSlider;
 
+    FMOD.Studio.Bus MusicBus;
+    FMOD.Studio.Bus sfxBus;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SetSFXVolume()
@@ -26,8 +30,9 @@ public class SettingsMenu : MonoBehaviour
         float newSFXVolume = sfxVolumeSlider.value / sfxVolumeSlider.maxValue;
         // sla sfx volume op in data
         Data.instance.sfxVolume = newSFXVolume;
-        // zet fmod volume naar nieuwe volume
-        // Freek: zet hier de command dat het volume van de fmod sfx mixer naar newSFXVolume gaat
+        // setting slider value to fmod bus
+        sfxBus = FMODUnity.RuntimeManager.GetBus("bus:/sfxBus");
+        sfxBus.setVolume(newSFXVolume);
     }
 
     public void SetMusicVolume()
@@ -36,8 +41,9 @@ public class SettingsMenu : MonoBehaviour
         float newMusicVolume = musicVolumeSlider.value / musicVolumeSlider.maxValue;
         // sla muziek volume op in data
         Data.instance.musicVolume = newMusicVolume;
-        // zet fmod volume naar nieuwe volume
-        // Freek: zet hier de command dat het volume van de fmod muziek mixer naar newMusicVolume gaat
+        // setting slider value to fmod bus
+        MusicBus = FMODUnity.RuntimeManager.GetBus("bus:/MusicBus");
+        MusicBus.setVolume(newMusicVolume);
     }
 
     public void OpenSettingsMenu()

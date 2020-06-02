@@ -56,7 +56,7 @@
 			<destination>{32142a07-357d-4f18-ab5b-1460dee39d79}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{96ee0558-12e4-46f7-8211-7076a4c21399}</destination>
+			<destination>{432f3c75-371e-42cf-a443-3afe308f3e07}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{1737a5e2-67e9-4508-bd3b-36952a70edad}" />
@@ -213,7 +213,7 @@
 			<value>90</value>
 		</property>
 		<property name="quantizationInterval">
-			<value>8</value>
+			<value>2</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{7e3fe667-ba9a-46cf-88ac-a1ac1b3cef4a}</destination>
@@ -236,7 +236,7 @@
 			<value>90</value>
 		</property>
 		<property name="quantizationInterval">
-			<value>8</value>
+			<value>2</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{7e3fe667-ba9a-46cf-88ac-a1ac1b3cef4a}</destination>
