@@ -52,8 +52,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.8, y: 1.8}
-    newSize: {x: 0.2, y: 0.2}
+    oldSize: {x: 2.65, y: 2.65}
+    newSize: {x: 2.65, y: 2.65}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -100,12 +100,12 @@ SpriteRenderer:
   m_SortingLayerID: 999950477
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 11c5940a3b4ab394083311d712a75b40, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d197649e8b6f5b5458b0580d9d1b7e0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 2.65, y: 2.65}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -226,6 +226,8 @@ MonoBehaviour:
   interactable: 0
   threadSprite: {fileID: 0}
   thread: {fileID: 0}
+  floatSprite: {fileID: 21300000, guid: d197649e8b6f5b5458b0580d9d1b7e0c, type: 3}
+  pinnedSprite: {fileID: 21300000, guid: ec87210b3a3f9664fa3919c3be454254, type: 3}
 --- !u!1 &8884306968844496982
 GameObject:
   m_ObjectHideFlags: 0

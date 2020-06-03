@@ -15,12 +15,19 @@ public class Pin : MonoBehaviour
     public SpriteRenderer threadSprite;
     public Thread thread;
 
+    SpriteRenderer spr;
+
+    [Header("animation")]
+    public Sprite floatSprite;
+    public Sprite pinnedSprite;
+
     private void Awake()
     {
         lr = GetComponent<LineRenderer>();
         pinManager = FindObjectOfType<PinManager>();
         thread = GetComponentInChildren<Thread>();
         threadSprite = thread.GetComponent<SpriteRenderer>();
+        spr = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -124,6 +131,9 @@ public class Pin : MonoBehaviour
                         // save clue inside thread of boss pin
                         connectedPin.thread.secondClue = clickedClue;
                     }
+
+                    // set sprite to pinned sprite
+                    spr.sprite = pinnedSprite;
                 }
             }
             else
@@ -131,7 +141,12 @@ public class Pin : MonoBehaviour
                 // if the pin is not dragged, pick it up!
                 dragged = true;
                 transform.parent = null;
+
+                // set sprite
+                spr.sprite = floatSprite;
+
                 FMODUnity.RuntimeManager.PlayOneShot("event:/Pin");
+
                 // if a pin is being replaced and the thread between the pins was selected as evidence, we want to remove the clues of that thread from the selected evidence.
                 if (isBossPin)
                 {
