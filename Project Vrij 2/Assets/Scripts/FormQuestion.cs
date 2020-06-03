@@ -8,7 +8,7 @@ public class FormQuestion : MonoBehaviour
     [Header("References")]
     public Text questionText;
     public Image solveStateImage;
-    
+
     [Header("Other")]
     public CaseQuestion questionInfo;
     //Clue[] oldSelectedClues;
@@ -22,7 +22,7 @@ public class FormQuestion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnQuestionButtonClicked()

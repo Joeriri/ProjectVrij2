@@ -48,6 +48,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void OpenSettingsMenu()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
         gameObject.SetActive(true);
         // laad opgeslagen audio volume data in de sliders
         musicVolumeSlider.value = Data.instance.musicVolume * musicVolumeSlider.maxValue;
@@ -56,6 +57,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void CloseSettingsMenu()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");  
         gameObject.SetActive(false);
     }
 }

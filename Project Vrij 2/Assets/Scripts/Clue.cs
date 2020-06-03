@@ -126,7 +126,6 @@ public class Clue : MonoBehaviour
         {
             // when the mouse button is released and we weren't dragging, we have been clicked!
             ClueManager.Instance.OpenItemViewer(this);
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Clue");
         }
 
         dragging = false;

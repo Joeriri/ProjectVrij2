@@ -48,18 +48,19 @@ public class FormManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void FormButtonPressed()
     {
         OpenForm();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
     }
 
     public void OpenForm()
@@ -80,6 +81,7 @@ public class FormManager : MonoBehaviour
         ClueManager.Instance.SetClueState(Clue.ClueStates.Organize);
         PinManager.Instance.SetPinsInteractable(true);
         Camera.main.GetComponent<CameraDragMove>().canNavigate = true;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
     }
 
     // SELECTION MODE
@@ -94,6 +96,7 @@ public class FormManager : MonoBehaviour
         ClueManager.Instance.SetClueState(Clue.ClueStates.Frozen);
         PinManager.Instance.SetThreadsInteractable(true);
         Camera.main.GetComponent<CameraDragMove>().canNavigate = true;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
     }
 
     public void ExitSelectMode()
@@ -106,6 +109,7 @@ public class FormManager : MonoBehaviour
         ClueManager.Instance.SetClueState(Clue.ClueStates.Frozen);
         PinManager.Instance.SetThreadsInteractable(false);
         Camera.main.GetComponent<CameraDragMove>().canNavigate = false;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
 
         // tell the current form question that there is new evidence selected
         currentQuestion.OnNewEvidenceSelected();

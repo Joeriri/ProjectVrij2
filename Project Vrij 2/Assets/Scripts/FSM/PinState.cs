@@ -11,7 +11,7 @@ public class PinState : GameState
     // called every frame when in this state.
     public override void OnStateUpdate()
     {
-        
+
     }
 
     // called when entering this state.

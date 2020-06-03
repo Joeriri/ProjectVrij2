@@ -29,7 +29,7 @@ public class Thread : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnMouseDown()
@@ -73,6 +73,7 @@ public class Thread : MonoBehaviour
         selectedForQuestion.questionInfo.selectedEvidence.Add(secondClue);
         // do a selecttion effect
         sprite.color = Color.green;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
     }
 
     public void DeselectThreadAsEvidence()

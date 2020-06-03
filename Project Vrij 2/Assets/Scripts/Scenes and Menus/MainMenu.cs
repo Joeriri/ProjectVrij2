@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour
     public void OnStartGameButtonPressed()
     {
         SceneLoader.Instance.GoToPinBoard();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
         Music.setParameterByName("Music Marker", 1);
     }
 
@@ -35,5 +36,6 @@ public class MainMenu : MonoBehaviour
     public void OnQuitButtonPressed()
     {
         SceneLoader.Instance.QuitGame();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
     }
 }

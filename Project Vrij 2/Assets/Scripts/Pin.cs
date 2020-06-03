@@ -131,7 +131,7 @@ public class Pin : MonoBehaviour
                 // if the pin is not dragged, pick it up!
                 dragged = true;
                 transform.parent = null;
-
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Pin");
                 // if a pin is being replaced and the thread between the pins was selected as evidence, we want to remove the clues of that thread from the selected evidence.
                 if (isBossPin)
                 {

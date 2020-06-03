@@ -83,6 +83,7 @@ public class ClueManager : MonoBehaviour
         SetClueState(Clue.ClueStates.Frozen);
         PinManager.Instance.SetPinsInteractable(false);
         Camera.main.GetComponent<CameraDragMove>().canNavigate = false;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Clue");
     }
 
     public void CloseItemViewer()
