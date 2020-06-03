@@ -9,6 +9,12 @@ public class FormQuestion : MonoBehaviour
     public Text questionText;
     public Image solveStateImage;
 
+    [Header("Tick Box")]
+    public Sprite openSprite;
+    public Sprite pendingSprite;
+    public Sprite falseSprite;
+    public Sprite solvedSprite;
+
     [Header("Other")]
     public CaseQuestion questionInfo;
     //Clue[] oldSelectedClues;
@@ -35,7 +41,7 @@ public class FormQuestion : MonoBehaviour
     public void OnNewEvidenceSelected()
     {
         questionInfo.solveState = CaseQuestion.SolveStates.Pending;
-        solveStateImage.color = Color.yellow;
+        solveStateImage.sprite = pendingSprite;
     }
 
     public void CheckAnswer()
@@ -105,12 +111,12 @@ public class FormQuestion : MonoBehaviour
     void FailQuestion()
     {
         questionInfo.solveState = CaseQuestion.SolveStates.Wrong;
-        solveStateImage.color = Color.red;
+        solveStateImage.sprite = falseSprite;
     }
 
     void SolveQuestion()
     {
         questionInfo.solveState = CaseQuestion.SolveStates.Solved;
-        solveStateImage.color = Color.green;
+        solveStateImage.sprite = solvedSprite;
     }
 }
