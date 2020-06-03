@@ -30,7 +30,7 @@ public class PinManager : MonoBehaviour
     public void PinButtonPressed()
     {
         CreatePin();
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Pin Bin");
     }
 
     public Pin CreatePin()

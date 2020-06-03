@@ -60,7 +60,7 @@ public class FormManager : MonoBehaviour
     public void FormButtonPressed()
     {
         OpenForm();
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Form");
     }
 
     public void OpenForm()
