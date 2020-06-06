@@ -2516,7 +2516,7 @@ GameObject:
   - component: {fileID: 573422350}
   m_Layer: 5
   m_Name: Form Button
-  m_TagString: Untagged
+  m_TagString: Form Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8225,7 +8225,7 @@ GameObject:
   - component: {fileID: 2082592546}
   m_Layer: 5
   m_Name: Pin Button
-  m_TagString: Untagged
+  m_TagString: Pin Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

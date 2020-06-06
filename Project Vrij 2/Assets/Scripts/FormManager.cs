@@ -14,6 +14,9 @@ public class FormManager : MonoBehaviour
     [SerializeField] private float questionBoxSpacing = 1f;
     public CaseQuestion[] caseQuestions;
 
+    private Button pinButton;
+    private Button formButton;
+
     public FormQuestion currentQuestion;
 
     List<FormQuestion> formQuestions = new List<FormQuestion>();
@@ -23,6 +26,9 @@ public class FormManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        pinButton = GameObject.FindGameObjectWithTag("Pin Button").GetComponent<Button>();
+        formButton = GameObject.FindGameObjectWithTag("Form Button").GetComponent<Button>();
 
         foreach (CaseQuestion cq in caseQuestions)
         {
@@ -98,6 +104,10 @@ public class FormManager : MonoBehaviour
         ClueManager.Instance.SetClueState(Clue.ClueStates.Frozen);
         PinManager.Instance.SetThreadsInteractable(true);
         Camera.main.GetComponent<CameraDragMove>().canNavigate = true;
+        // disable buttons
+        pinButton.interactable = false;
+        formButton.interactable = false;
+        // play sound
         FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
     }
 
@@ -111,6 +121,10 @@ public class FormManager : MonoBehaviour
         ClueManager.Instance.SetClueState(Clue.ClueStates.Frozen);
         PinManager.Instance.SetThreadsInteractable(false);
         Camera.main.GetComponent<CameraDragMove>().canNavigate = false;
+        // enable buttons
+        pinButton.interactable = true;
+        formButton.interactable = true;
+        // play sound
         FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
 
         // tell the current form question that there is new evidence selected
