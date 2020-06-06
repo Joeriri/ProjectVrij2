@@ -14,9 +14,8 @@ public class ClueManager : MonoBehaviour
     public GameObject itemViewer;
     public Image itemViewImage;
 
-    [Header("Pinning")]
-    //public GameObject pinPrefab;
-    //public Pin draggedPin;
+    [Header("Viewing")]
+    [SerializeField] private float delayedSoundWaitDuration = 1f;
 
     Clue[] allClues;
 
@@ -83,7 +82,10 @@ public class ClueManager : MonoBehaviour
         SetClueState(Clue.ClueStates.Frozen);
         PinManager.Instance.SetPinsInteractable(false);
         Camera.main.GetComponent<CameraDragMove>().canNavigate = false;
+        // play view clue sound
         FMODUnity.RuntimeManager.PlayOneShot("event:/Clue");
+        // start coroutine for delayed clue sound
+        StartCoroutine(DelayedClueSound(clue));
     }
 
     public void CloseItemViewer()
@@ -103,6 +105,17 @@ public class ClueManager : MonoBehaviour
         foreach (Clue everyClue in allClues)
         {
             everyClue.state = newState;
+        }
+    }
+
+    IEnumerator DelayedClueSound(Clue viewedClue)
+    {
+        // wait an amount of time before playing the custom sound
+        yield return new WaitForSeconds(delayedSoundWaitDuration);
+        // play the sound that comes with the clue
+        if (viewedClue.playAfterClick != "")
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/" + viewedClue.playAfterClick);
         }
     }
 }

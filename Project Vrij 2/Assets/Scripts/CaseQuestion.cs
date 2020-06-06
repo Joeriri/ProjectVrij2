@@ -6,7 +6,9 @@ using UnityEngine;
 public class CaseQuestion
 {
     public string question;
-    public Clue[] clueAnswers;
+    //public Clue[] clueAnswers;
+    public Clue[] requiredClueAnswers;
+    public Clue[] optionalClueAnswers;
     public List<Clue> selectedEvidence;
     public enum SolveStates
     {

@@ -5,13 +5,29 @@ using FMODUnity;
 
 public class Clue : MonoBehaviour
 {
+    [Header("States")]
+    public ClueTypes type;
+    public ClueStates state;
+
+    [Header("Audio")]
+    // extra fmod event to play on click
+    public string playAfterClick;
+
+    // type
+    public enum ClueTypes
+    {
+        Interview,
+        Profile,
+        Item,
+        Location
+    }
+
     // state
     public enum ClueStates
     {
         Organize,
         Frozen
     }
-    public ClueStates state;
 
     // Organization
     private float minDistanceBeforeDrag = 5f;

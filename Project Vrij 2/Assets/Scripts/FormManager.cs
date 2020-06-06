@@ -41,7 +41,9 @@ public class FormManager : MonoBehaviour
 
             // assign variables
             newFQ.questionInfo.question = cq.question;
-            newFQ.questionInfo.clueAnswers = cq.clueAnswers;
+            //newFQ.questionInfo.clueAnswers = cq.clueAnswers;
+            newFQ.questionInfo.requiredClueAnswers = cq.requiredClueAnswers;
+            newFQ.questionInfo.optionalClueAnswers = cq.optionalClueAnswers;
         }
     }
 
