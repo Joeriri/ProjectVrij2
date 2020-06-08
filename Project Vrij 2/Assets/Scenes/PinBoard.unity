@@ -1253,7 +1253,7 @@ PrefabInstance:
     - target: {fileID: 2720907832129716738, guid: 1868e9be9cc1a1f478d9913cb9d9b207,
         type: 3}
       propertyPath: playAfterClick
-      value: 
+      value: Wulfgang
       objectReference: {fileID: 0}
     - target: {fileID: 2720907832129716748, guid: 1868e9be9cc1a1f478d9913cb9d9b207,
         type: 3}
@@ -2241,7 +2241,7 @@ PrefabInstance:
     - target: {fileID: 2720907832129716738, guid: 1868e9be9cc1a1f478d9913cb9d9b207,
         type: 3}
       propertyPath: playAfterClick
-      value: 
+      value: Omar
       objectReference: {fileID: 0}
     - target: {fileID: 2720907832129716748, guid: 1868e9be9cc1a1f478d9913cb9d9b207,
         type: 3}
@@ -3913,7 +3913,7 @@ PrefabInstance:
     - target: {fileID: 2720907832129716738, guid: 1868e9be9cc1a1f478d9913cb9d9b207,
         type: 3}
       propertyPath: playAfterClick
-      value: 
+      value: Cornelius
       objectReference: {fileID: 0}
     - target: {fileID: 2720907832129716748, guid: 1868e9be9cc1a1f478d9913cb9d9b207,
         type: 3}
@@ -6602,7 +6602,7 @@ PrefabInstance:
     - target: {fileID: 2720907832129716738, guid: 1868e9be9cc1a1f478d9913cb9d9b207,
         type: 3}
       propertyPath: playAfterClick
-      value: 
+      value: Diane
       objectReference: {fileID: 0}
     - target: {fileID: 2720907832129716748, guid: 1868e9be9cc1a1f478d9913cb9d9b207,
         type: 3}
@@ -6767,7 +6767,7 @@ PrefabInstance:
     - target: {fileID: 2720907832129716738, guid: 1868e9be9cc1a1f478d9913cb9d9b207,
         type: 3}
       propertyPath: playAfterClick
-      value: 
+      value: Isabelle
       objectReference: {fileID: 0}
     - target: {fileID: 2720907832129716748, guid: 1868e9be9cc1a1f478d9913cb9d9b207,
         type: 3}

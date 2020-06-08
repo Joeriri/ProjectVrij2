@@ -165,6 +165,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{be9c060b-97bd-4e80-8cae-3ac064d71c8e}">
+		<property name="volume">
+			<value>-12.5</value>
+		</property>
 		<property name="name">
 			<value>Gameplay 1</value>
 		</property>
@@ -190,6 +193,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{5954c9dc-f434-4d76-abad-3d5fef6950b9}">
+		<property name="volume">
+			<value>-12.5</value>
+		</property>
 		<property name="name">
 			<value>Gameplay 2</value>
 		</property>
