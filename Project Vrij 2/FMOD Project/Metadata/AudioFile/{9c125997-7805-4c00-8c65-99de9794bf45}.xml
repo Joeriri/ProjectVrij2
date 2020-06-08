@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{9c125997-7805-4c00-8c65-99de9794bf45}">
+		<property name="assetPath">
+			<value>Progressed game music - 3_4 - tempo 128.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>170.1562358276644</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{55ff583b-3b13-4893-aeab-cd9089037dc6}</destination>
+		</relationship>
+	</object>
+</objects>
