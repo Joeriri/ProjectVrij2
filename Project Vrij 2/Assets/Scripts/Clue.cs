@@ -36,14 +36,13 @@ public class Clue : MonoBehaviour
     private Vector2 originalMousePos;
     private bool dragging = false;
 
-    // Pinning
-    private GameObject pinPrefab;
-
     private BoxCollider2D coll;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         coll = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         ClueManager.Instance.clueSortation.Add(this);
     }
@@ -63,12 +62,26 @@ public class Clue : MonoBehaviour
 
     private void OnMouseEnter()
     {
-
+        switch (state)
+        {
+            case ClueStates.Organize:
+                OnOrganizeMouseEnter();
+                break;
+            case ClueStates.Frozen:
+                break;
+        }
     }
 
     private void OnMouseExit()
     {
-
+        switch (state)
+        {
+            case ClueStates.Organize:
+                OnOrganizeMouseExit();
+                break;
+            case ClueStates.Frozen:
+                break;
+        }
     }
 
     private void OnMouseDown()
@@ -123,6 +136,16 @@ public class Clue : MonoBehaviour
 
     #region Organize State Functions
 
+    void OnOrganizeMouseEnter()
+    {
+        SetOutlineColor(Color.black);
+    }
+
+    void OnOrganizeMouseExit()
+    {
+        SetOutlineColor(Color.clear);
+    }
+
     void OnOrganizeMouseDown()
     {
         originalMousePos = Input.mousePosition;
@@ -142,6 +165,7 @@ public class Clue : MonoBehaviour
         {
             // when the mouse button is released and we weren't dragging, we have been clicked!
             ClueManager.Instance.OpenItemViewer(this);
+            SetOutlineColor(Color.clear);
         }
 
         dragging = false;
@@ -179,4 +203,14 @@ public class Clue : MonoBehaviour
     }
 
     #endregion
+
+    // outline shader source: https://assetstore.unity.com/packages/vfx/shaders/2d-sprite-outline-109669#reviews
+    // source for setting shader property: https://nielson.dev/2016/04/2d-sprite-outlines-in-unity
+    void SetOutlineColor(Color newColor)
+    {
+        MaterialPropertyBlock mpb = new MaterialPropertyBlock();
+        spriteRenderer.GetPropertyBlock(mpb);
+        mpb.SetColor("_SolidOutline", newColor);
+        spriteRenderer.SetPropertyBlock(mpb);
+    }
 }
