@@ -779,7 +779,7 @@ GameObject:
   - component: {fileID: 1784749671}
   - component: {fileID: 1784749670}
   m_Layer: 5
-  m_Name: Quit Button
+  m_Name: continue Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1022,7 +1022,7 @@ GameObject:
   - component: {fileID: 2123181872}
   - component: {fileID: 2123181871}
   m_Layer: 5
-  m_Name: SubTitle
+  m_Name: Tekst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1044,8 +1044,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.9, y: 76}
-  m_SizeDelta: {x: 674.33936, y: 223.36398}
+  m_AnchoredPosition: {x: 21.7, y: 28.9}
+  m_SizeDelta: {x: 731.5974, y: 455.49112}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2123181871
 MonoBehaviour:
@@ -1078,7 +1078,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: This screen is work-in-progress
+  m_Text: '(This screen is work-in-progress)
+
+
+    You are Irene Shapiro, a young
+    detective freshly graduated from the academy. When joining her new team, they
+    gave her an old cold case to test her detective skills. Help Shapiro solve the
+    Falsetto case!'
 --- !u!222 &2123181872
 CanvasRenderer:
   m_ObjectHideFlags: 0
