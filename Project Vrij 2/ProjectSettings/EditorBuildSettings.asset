@@ -12,12 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MainTitle.unity
     guid: 7dad8813ecacea747bca39bb1d769a53
   - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: a08c0e86d6cf4f84999c340fd5486214
+  - enabled: 1
     path: Assets/Scenes/PinBoard.unity
     guid: 4380d6e3e60ea304a80f7f4590d1e119
   - enabled: 1
     path: Assets/Scenes/Ending.unity
     guid: 61ca3c4ee8701ee45bd96bf1fa7a3fa0
   - enabled: 0
-    path: Assets/Scenes/Foyer.unity
-    guid: c3e3e6da90f1ba34e839386cedcffbdf
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

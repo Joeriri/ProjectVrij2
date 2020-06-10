@@ -42,6 +42,11 @@ public class SceneLoader : MonoBehaviour
         LoadScene("MainTitle");
     }
 
+    public void GoToIntro()
+    {
+        LoadScene("Intro");
+    }
+
     public void GoToPinBoard()
     {
         LoadScene("PinBoard");
