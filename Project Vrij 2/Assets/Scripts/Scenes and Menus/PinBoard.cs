@@ -5,6 +5,7 @@ using UnityEngine;
 public class PinBoard : MonoBehaviour
 {
     public FadeScreen fadescreen;
+    public PauseMenu pauseMenu;
 
     static public PinBoard Instance;
 
@@ -22,7 +23,16 @@ public class PinBoard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Pause / unpause game by pressing Esc
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            //if (!PauseMenu.gameIsPaused)
+            //    pauseMenu.PauseGame();
+            //else
+            //    pauseMenu.ResumeGame();
+
+            SceneLoader.Instance.GoToMainTitle();
+        }
     }
 
     public void WinGame()

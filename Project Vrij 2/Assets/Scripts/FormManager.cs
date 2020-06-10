@@ -133,8 +133,10 @@ public class FormManager : MonoBehaviour
 
     public void CheckPendingQuestions()
     {
+        int correctSolveCounter = 0;
+
         // let every pending form question check their answer
-        foreach(FormQuestion fq in formQuestions)
+        foreach (FormQuestion fq in formQuestions)
         {
             if (fq.questionInfo.solveState == CaseQuestion.SolveStates.Pending)
             {
@@ -142,8 +144,7 @@ public class FormManager : MonoBehaviour
             }
 
             // check if all questions have been answered correctly
-            int correctSolveCounter = 0;
-            if(fq.questionInfo.solveState == CaseQuestion.SolveStates.Solved)
+            if (fq.questionInfo.solveState == CaseQuestion.SolveStates.Solved)
             {
                 correctSolveCounter++;
             }
@@ -151,6 +152,7 @@ public class FormManager : MonoBehaviour
             {
                 // all questions have been solved. Win the game!
                 PinBoard.Instance.WinGame();
+                Debug.Log("The player has won the game!");
             }
 
         }
