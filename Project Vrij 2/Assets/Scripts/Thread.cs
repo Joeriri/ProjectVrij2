@@ -71,8 +71,9 @@ public class Thread : MonoBehaviour
         // add the clues this thread is connected to to the selected evidence of the current question
         selectedForQuestion.questionInfo.selectedEvidence.Add(firstClue);
         selectedForQuestion.questionInfo.selectedEvidence.Add(secondClue);
-        // do a selecttion effect
+        // do a selection effect
         sprite.color = Color.green;
+        // play sound
         FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
     }
 
@@ -82,7 +83,7 @@ public class Thread : MonoBehaviour
         // remove the clues this thread is connected to from the selected evidence of the current question
         selectedForQuestion.questionInfo.selectedEvidence.Remove(firstClue);
         selectedForQuestion.questionInfo.selectedEvidence.Remove(secondClue);
-        // do a selecttion effect
+        // do a selection effect
         sprite.color = Color.white;
     }
 }

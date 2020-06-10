@@ -114,7 +114,7 @@ public class CameraDragMove : MonoBehaviour
         return BoardBounds.Instance.ClampInBounds(targetPosition, new Vector3(horizExtent, vertExtent, 0f));
     }
 
-    bool MouseIsOverUI()
+    public bool MouseIsOverUI()
     {
         bool mouseIsOverUI = false;
 

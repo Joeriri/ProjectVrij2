@@ -10,6 +10,8 @@ public class PinManager : MonoBehaviour
 
     public static PinManager Instance;
 
+    public bool holdingPin;
+
     private void Awake()
     {
         Instance = this;
@@ -29,8 +31,11 @@ public class PinManager : MonoBehaviour
 
     public void PinButtonPressed()
     {
-        CreatePin();
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Pin Bin");
+        if (!holdingPin)
+        {
+            CreatePin();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Pin Bin");
+        }
     }
 
     public Pin CreatePin()
@@ -50,6 +55,7 @@ public class PinManager : MonoBehaviour
         // set variables
         newPin.dragged = true;
         newPin.interactable = true;
+        PinManager.Instance.holdingPin = true;
         // return
         return newPin;
     }

@@ -90,6 +90,7 @@ public class Pin : MonoBehaviour
                         Pin newPin = PinManager.Instance.CreatePin();
                         // place this pin
                         dragged = false;
+                        PinManager.Instance.holdingPin = false;
                         isBossPin = true;
                         transform.parent = clickedClue.transform;
                         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
@@ -106,6 +107,7 @@ public class Pin : MonoBehaviour
                     {
                         // place this pin
                         dragged = false;
+                        PinManager.Instance.holdingPin = false;
                         transform.parent = clickedClue.transform;
                         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
 
@@ -135,12 +137,22 @@ public class Pin : MonoBehaviour
                     // set sprite to pinned sprite
                     spr.sprite = pinnedSprite;
                 }
+                else
+                // if we did not hit a clue
+                {
+                    PinManager.Instance.holdingPin = false;
+                    // delete both pins
+                    PinManager.Instance.DeletePin(this);
+                    if (connectedPin != null)
+                        PinManager.Instance.DeletePin(connectedPin);
+                }
             }
             else
             {
                 // if the pin is not dragged, pick it up!
                 dragged = true;
                 transform.parent = null;
+                PinManager.Instance.holdingPin = true;
 
                 // set sprite
                 spr.sprite = floatSprite;

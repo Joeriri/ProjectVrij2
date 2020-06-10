@@ -13,6 +13,8 @@ public class Clue : MonoBehaviour
     // extra fmod event to play on click
     public string playAfterClick;
 
+    private CameraDragMove camMovement;
+
     // type
     public enum ClueTypes
     {
@@ -43,6 +45,7 @@ public class Clue : MonoBehaviour
     {
         coll = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        camMovement = Camera.main.GetComponent<CameraDragMove>();
 
         ClueManager.Instance.clueSortation.Add(this);
     }
@@ -138,12 +141,12 @@ public class Clue : MonoBehaviour
 
     void OnOrganizeMouseEnter()
     {
-        SetOutlineColor(Color.black);
+        //SetOutlineColor(Color.black);
     }
 
     void OnOrganizeMouseExit()
     {
-        SetOutlineColor(Color.clear);
+        //SetOutlineColor(Color.clear);
     }
 
     void OnOrganizeMouseDown()
@@ -164,8 +167,12 @@ public class Clue : MonoBehaviour
         if (!dragging)
         {
             // when the mouse button is released and we weren't dragging, we have been clicked!
-            ClueManager.Instance.OpenItemViewer(this);
-            SetOutlineColor(Color.clear);
+            // make sure there is no UI over this clue that the player wanted to click instead
+            if (!camMovement.MouseIsOverUI())
+            {
+                ClueManager.Instance.OpenItemViewer(this);
+                SetOutlineColor(Color.clear);
+            }
         }
 
         dragging = false;

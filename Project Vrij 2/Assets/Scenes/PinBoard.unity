@@ -2216,6 +2216,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473252706}
   m_CullTransparentMesh: 0
+--- !u!114 &497225538 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2720907832129716738, guid: 1868e9be9cc1a1f478d9913cb9d9b207,
+    type: 3}
+  m_PrefabInstance: {fileID: 1989138330}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92f556bc8ccc0c4dba46fa9d4151ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &514718279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5989,10 +6001,11 @@ MonoBehaviour:
   - question: Wie was er aanwezig op de crime scene?
     requiredClueAnswers:
     - {fileID: 1119247400}
-    - {fileID: 952133102}
+    - {fileID: 1762503771}
     optionalClueAnswers:
     - {fileID: 1119840685}
     - {fileID: 952133102}
+    - {fileID: 497225538}
     selectedEvidence: []
     solveState: 0
   currentQuestion: {fileID: 0}
@@ -6114,6 +6127,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   pins: []
+  holdingPin: 0
 --- !u!4 &1398495675
 Transform:
   m_ObjectHideFlags: 0
@@ -7485,6 +7499,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734713362}
   m_CullTransparentMesh: 0
+--- !u!114 &1762503771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2720907832129716738, guid: 1868e9be9cc1a1f478d9913cb9d9b207,
+    type: 3}
+  m_PrefabInstance: {fileID: 120272866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92f556bc8ccc0c4dba46fa9d4151ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1795614474
 PrefabInstance:
   m_ObjectHideFlags: 0
