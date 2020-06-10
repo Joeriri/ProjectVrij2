@@ -89,7 +89,7 @@ public class FormManager : MonoBehaviour
         ClueManager.Instance.SetClueState(Clue.ClueStates.Organize);
         PinManager.Instance.SetPinsInteractable(true);
         Camera.main.GetComponent<CameraDragMove>().canNavigate = true;
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Form Put Down");
     }
 
     // SELECTION MODE
@@ -108,7 +108,7 @@ public class FormManager : MonoBehaviour
         pinButton.interactable = false;
         formButton.interactable = false;
         // play sound
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click 2");
     }
 
     public void ExitSelectMode()
@@ -125,7 +125,7 @@ public class FormManager : MonoBehaviour
         pinButton.interactable = true;
         formButton.interactable = true;
         // play sound
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click 2");
 
         // tell the current form question that there is new evidence selected
         currentQuestion.OnNewEvidenceSelected();

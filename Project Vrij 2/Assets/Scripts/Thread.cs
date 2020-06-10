@@ -74,7 +74,7 @@ public class Thread : MonoBehaviour
         // do a selection effect
         sprite.color = Color.green;
         // play sound
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Thread Click");
     }
 
     public void DeselectThreadAsEvidence()
