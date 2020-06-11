@@ -11,15 +11,12 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Music = FMODUnity.RuntimeManager.CreateInstance("event:/Music");
-        Music.start();
-
         // when the game launches, do this once and then never again.
         if (!Data.instance.gameHasLaunched)
         {
             Data.instance.gameHasLaunched = true;
-            
-
+            Music = FMODUnity.RuntimeManager.CreateInstance("event:/Music");
+            Music.start();
         }
     }
 
