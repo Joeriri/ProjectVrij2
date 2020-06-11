@@ -68,6 +68,7 @@ public class FormManager : MonoBehaviour
     public void FormButtonPressed()
     {
         OpenForm();
+        // play sound
         FMODUnity.RuntimeManager.PlayOneShot("event:/Form");
     }
 
@@ -89,6 +90,7 @@ public class FormManager : MonoBehaviour
         ClueManager.Instance.SetClueState(Clue.ClueStates.Organize);
         PinManager.Instance.SetPinsInteractable(true);
         Camera.main.GetComponent<CameraDragMove>().canNavigate = true;
+        // play sound
         FMODUnity.RuntimeManager.PlayOneShot("event:/Form Put Down");
     }
 
