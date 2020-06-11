@@ -28,4 +28,6 @@ public class Data
 
     [Range(0.0f, 1.0f)] public float sfxVolume = 1.0f;
     [Range(0.0f, 1.0f)] public float musicVolume = 1.0f;
+
+    public bool gameHasLaunched = false;
 }

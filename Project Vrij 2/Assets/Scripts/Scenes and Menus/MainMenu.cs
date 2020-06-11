@@ -13,6 +13,14 @@ public class MainMenu : MonoBehaviour
     {
         Music = FMODUnity.RuntimeManager.CreateInstance("event:/Music");
         Music.start();
+
+        // when the game launches, do this once and then never again.
+        if (!Data.instance.gameHasLaunched)
+        {
+            Data.instance.gameHasLaunched = true;
+            
+
+        }
     }
 
     // Update is called once per frame
