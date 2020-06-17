@@ -8,10 +8,13 @@ public class Clue : MonoBehaviour
     [Header("States")]
     public ClueTypes type;
     public ClueStates state;
+    public bool interactable = true;
 
     [Header("Audio")]
     // extra fmod event to play on click
     public string playAfterClick;
+
+    private bool falseClick;
 
     private CameraDragMove camMovement;
 
@@ -61,31 +64,22 @@ public class Clue : MonoBehaviour
 
     }
 
-    #region Mouse Actions
-
     private void OnMouseEnter()
     {
-        switch (state)
-        {
-            case ClueStates.Organize:
-                OnOrganizeMouseEnter();
-                break;
-            case ClueStates.Frozen:
-                break;
-        }
+        //if (interactable || PinManager.Instance.holdingPin)
+        //{
+        //    SetOutlineColor(Color.white);
+        //}
     }
 
     private void OnMouseExit()
     {
-        switch (state)
-        {
-            case ClueStates.Organize:
-                OnOrganizeMouseExit();
-                break;
-            case ClueStates.Frozen:
-                break;
-        }
+        //SetOutlineColor(Color.clear);
     }
+
+    #region Mouse Actions
+
+
 
     private void OnMouseDown()
     {
@@ -138,67 +132,75 @@ public class Clue : MonoBehaviour
     #endregion
 
     #region Organize State Functions
-
-    void OnOrganizeMouseEnter()
-    {
-        //SetOutlineColor(Color.black);
-    }
-
-    void OnOrganizeMouseExit()
-    {
-        //SetOutlineColor(Color.clear);
-    }
-
+    
     void OnOrganizeMouseDown()
-    {
-        originalMousePos = Input.mousePosition;
-        PickUpClue();
-        MouseCursor.Instance.SetCursor("click");
+    {   
+        // set falseclick to true if the clue was clicked but actually there was a UI element over it that was clicked
+        if (camMovement.MouseIsOverUI())
+            falseClick = true;
+
+        if (!falseClick)
+        {
+            originalMousePos = Input.mousePosition;
+            PickUpClue();
+            MouseCursor.Instance.SetCursor("click");
+        }
     }
 
     void OnOrganizeMouseUp()
     {
-        dragging = false;
-        MouseCursor.Instance.SetCursor("point");
+        if (!falseClick)
+        {
+            dragging = false;
+            MouseCursor.Instance.SetCursor("point");
+        }
+
+        falseClick = false;
     }
 
     void OnOrganizeClicked()
     {
-        if (!dragging)
+        if (!falseClick)
         {
-            // when the mouse button is released and we weren't dragging, we have been clicked!
-            // make sure there is no UI over this clue that the player wanted to click instead
-            if (!camMovement.MouseIsOverUI())
+            if (!dragging)
             {
-                ClueManager.Instance.OpenItemViewer(this);
-                SetOutlineColor(Color.clear);
+                // when the mouse button is released and we weren't dragging, we have been clicked!
+                // make sure there is no UI over this clue that the player wanted to click instead
+                if (!camMovement.MouseIsOverUI())
+                {
+                    ClueManager.Instance.OpenItemViewer(this);
+                    SetOutlineColor(Color.clear);
+                }
             }
-        }
 
-        dragging = false;
-        MouseCursor.Instance.SetCursor("point");
+            dragging = false;
+            MouseCursor.Instance.SetCursor("point");
+        }
     }
 
     void OnOrganizeDrag()
     {
-        // check if the player dragged the cursor far enough, then we allow the clue to be dragged along
-        if (!dragging)
+        if (!falseClick)
         {
-            Vector2 newMousePos = Input.mousePosition;
-            float diff = (originalMousePos - newMousePos).magnitude;
-
-            if (diff > minDistanceBeforeDrag)
+            // check if the player dragged the cursor far enough, then we allow the clue to be dragged along
+            if (!dragging)
             {
-                dragging = true;
-                offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameObject.transform.position.z));
-                MouseCursor.Instance.SetCursor("hold");
-            }
-        }
+                Vector2 newMousePos = Input.mousePosition;
+                float diff = (originalMousePos - newMousePos).magnitude;
 
-        if (dragging)
-        {
-            Vector3 newPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameObject.transform.position.z));
-            transform.position = BoardBounds.Instance.ClampInBounds(newPos + offset, coll.bounds.extents);
+                if (diff > minDistanceBeforeDrag)
+                {
+                    dragging = true;
+                    offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameObject.transform.position.z));
+                    MouseCursor.Instance.SetCursor("hold");
+                }
+            }
+
+            if (dragging)
+            {
+                Vector3 newPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameObject.transform.position.z));
+                transform.position = BoardBounds.Instance.ClampInBounds(newPos + offset, coll.bounds.extents);
+            }
         }
     }
 

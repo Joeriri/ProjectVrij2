@@ -26,12 +26,12 @@ public class PinBoard : MonoBehaviour
         // Pause / unpause game by pressing Esc
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //if (!PauseMenu.gameIsPaused)
-            //    pauseMenu.PauseGame();
-            //else
-            //    pauseMenu.ResumeGame();
+            if (!PauseMenu.gameIsPaused)
+                pauseMenu.PauseGame();
+            else
+                pauseMenu.ResumeGame();
 
-            SceneLoader.Instance.GoToMainTitle();
+            //SceneLoader.Instance.GoToMainTitle();
         }
     }
 

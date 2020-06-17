@@ -50,7 +50,7 @@ public class CameraDragMove : MonoBehaviour
                 // shoot a ray to check if we are not clicking anything else
                 Vector3 screenPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(screenPos, Vector3.zero);
-
+                
                 if (!hit && !MouseIsOverUI())
                 {
                     if (drag == false)

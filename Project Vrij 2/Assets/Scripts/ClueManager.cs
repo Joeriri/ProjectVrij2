@@ -40,21 +40,6 @@ public class ClueManager : MonoBehaviour
 
     }
 
-    //public void PinButtonPressed()
-    //{
-    //    foreach(Clue clue in allClues)
-    //    {
-    //        if (clue.state == Clue.ClueStates.Organize)
-    //        {
-    //            clue.state = Clue.ClueStates.Pin;
-    //        }
-    //        else if (clue.state == Clue.ClueStates.Pin)
-    //        {
-    //            clue.state = Clue.ClueStates.Organize;
-    //        }
-    //    }
-    //}
-
     public void SortCluesAlongZ()
     {
         // NOTE: clues move freely across the z axis to make them appear on top of one another.
@@ -105,6 +90,14 @@ public class ClueManager : MonoBehaviour
         foreach (Clue everyClue in allClues)
         {
             everyClue.state = newState;
+        }
+    }
+
+    public void SetCluesInteractable(bool isInteractable)
+    {
+        foreach (Clue everyClue in allClues)
+        {
+            everyClue.interactable = isInteractable;
         }
     }
 
