@@ -24,6 +24,8 @@ public class FadeScreen : MonoBehaviour
         
     }
 
+    // Without anim curve
+
     public void StartFade(Color oldColor, Color newColor, float duration)
     {
         StartCoroutine(FadeToColor(oldColor, newColor, duration));
@@ -37,5 +39,28 @@ public class FadeScreen : MonoBehaviour
             fadeScreen.color = Color.Lerp(oldColor, newColor, i);
             yield return null;
         }
+
+        fadeScreen.color = newColor;
+    }
+
+    // With anim curve
+
+    public void StartFade(Color oldColor, Color newColor, float duration, AnimationCurve animCurve)
+    {
+        StartCoroutine(FadeToColor(oldColor, newColor, duration, animCurve));
+    }
+
+    IEnumerator FadeToColor(Color oldColor, Color newColor, float duration, AnimationCurve animCurve)
+    {
+        float timer = 0;
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            float prc = timer / duration;
+            fadeScreen.color = Color.Lerp(oldColor, newColor, animCurve.Evaluate(prc));
+            yield return null;
+        }
+
+        fadeScreen.color = newColor;
     }
 }

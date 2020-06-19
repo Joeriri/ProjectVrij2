@@ -9,6 +9,10 @@ public class Thread : MonoBehaviour
     public Clue firstClue;
     public Clue secondClue;
 
+    [Header("Animation")]
+    public Sprite defaultSprite;
+    public Sprite selectedSprite;
+
     FormQuestion selectedForQuestion;
 
     Collider2D coll;
@@ -72,7 +76,7 @@ public class Thread : MonoBehaviour
         selectedForQuestion.questionInfo.selectedEvidence.Add(firstClue);
         selectedForQuestion.questionInfo.selectedEvidence.Add(secondClue);
         // do a selection effect
-        sprite.color = Color.green;
+        sprite.sprite = selectedSprite;
         // play sound
         FMODUnity.RuntimeManager.PlayOneShot("event:/Thread Click");
     }
@@ -84,6 +88,6 @@ public class Thread : MonoBehaviour
         selectedForQuestion.questionInfo.selectedEvidence.Remove(firstClue);
         selectedForQuestion.questionInfo.selectedEvidence.Remove(secondClue);
         // do a selection effect
-        sprite.color = Color.white;
+        sprite.sprite = defaultSprite;
     }
 }

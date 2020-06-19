@@ -66,15 +66,12 @@ public class Clue : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        //if (interactable || PinManager.Instance.holdingPin)
-        //{
-        //    SetOutlineColor(Color.white);
-        //}
+
     }
 
     private void OnMouseExit()
     {
-        //SetOutlineColor(Color.clear);
+
     }
 
     #region Mouse Actions
@@ -169,7 +166,6 @@ public class Clue : MonoBehaviour
                 if (!camMovement.MouseIsOverUI())
                 {
                     ClueManager.Instance.OpenItemViewer(this);
-                    SetOutlineColor(Color.clear);
                 }
             }
 
@@ -213,13 +209,5 @@ public class Clue : MonoBehaviour
 
     #endregion
 
-    // outline shader source: https://assetstore.unity.com/packages/vfx/shaders/2d-sprite-outline-109669#reviews
-    // source for setting shader property: https://nielson.dev/2016/04/2d-sprite-outlines-in-unity
-    void SetOutlineColor(Color newColor)
-    {
-        MaterialPropertyBlock mpb = new MaterialPropertyBlock();
-        spriteRenderer.GetPropertyBlock(mpb);
-        mpb.SetColor("_SolidOutline", newColor);
-        spriteRenderer.SetPropertyBlock(mpb);
-    }
+    
 }

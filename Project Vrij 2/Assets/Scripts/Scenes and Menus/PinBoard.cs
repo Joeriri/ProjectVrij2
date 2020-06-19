@@ -7,6 +7,11 @@ public class PinBoard : MonoBehaviour
     public FadeScreen fadescreen;
     public PauseMenu pauseMenu;
 
+    [SerializeField] private float fadeInDuration = 3f;
+    public AnimationCurve fadeInCurve;
+    [SerializeField] private float fadeOutDuration = 5f;
+    public AnimationCurve fadeOutCurve;
+
     static public PinBoard Instance;
 
     private void Awake()
@@ -17,7 +22,24 @@ public class PinBoard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(EnterFade());
+    }
+
+    IEnumerator EnterFade()
+    {
+        // de-activate clues, pins and camera navigation
+        ClueManager.Instance.SetClueState(Clue.ClueStates.Frozen);
+        PinManager.Instance.SetPinsInteractable(false);
+        Camera.main.GetComponent<CameraDragMove>().canNavigate = false;
+        // fade
+        fadescreen.gameObject.SetActive(true);
+        fadescreen.StartFade(Color.black, Color.clear, fadeInDuration, fadeInCurve);
+        yield return new WaitForSeconds(fadeInDuration);
+        fadescreen.gameObject.SetActive(false);
+        // activate clues, pins and camera navigation
+        ClueManager.Instance.SetClueState(Clue.ClueStates.Organize);
+        PinManager.Instance.SetPinsInteractable(true);
+        Camera.main.GetComponent<CameraDragMove>().canNavigate = true;
     }
 
     // Update is called once per frame
@@ -42,10 +64,8 @@ public class PinBoard : MonoBehaviour
 
     IEnumerator FadeToEnding()
     {
-        float fadeOutDuration = 5f;
-
         fadescreen.gameObject.SetActive(true);
-        fadescreen.StartFade(Color.clear, Color.black, fadeOutDuration);
+        fadescreen.StartFade(Color.clear, Color.black, fadeOutDuration, fadeOutCurve);
         yield return new WaitForSeconds(fadeOutDuration);
         SceneLoader.Instance.GoToEnding();
     }
