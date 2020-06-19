@@ -143,6 +143,7 @@ public class FormManager : MonoBehaviour
             if (fq.questionInfo.solveState == CaseQuestion.SolveStates.Pending)
             {
                 fq.CheckAnswer();
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Click 2");
             }
 
             // check if all questions have been answered correctly
