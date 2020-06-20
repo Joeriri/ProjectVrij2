@@ -16,6 +16,7 @@ public class FormManager : MonoBehaviour
 
     private Button pinButton;
     private Button formButton;
+    private Animator formScreenAnimator;
 
     public FormQuestion currentQuestion;
 
@@ -29,6 +30,7 @@ public class FormManager : MonoBehaviour
 
         pinButton = GameObject.FindGameObjectWithTag("Pin Button").GetComponent<Button>();
         formButton = GameObject.FindGameObjectWithTag("Form Button").GetComponent<Button>();
+        formScreenAnimator = formScreen.GetComponent<Animator>();
 
         foreach (CaseQuestion cq in caseQuestions)
         {
@@ -76,6 +78,7 @@ public class FormManager : MonoBehaviour
     {
         // show form screen
         formScreen.SetActive(true);
+        formScreenAnimator.Play("Case Form Open");
         // de-activate clues, pins and camera navigation
         ClueManager.Instance.SetClueState(Clue.ClueStates.Frozen);
         PinManager.Instance.SetPinsInteractable(false);

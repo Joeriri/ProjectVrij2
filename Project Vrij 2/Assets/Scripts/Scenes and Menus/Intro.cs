@@ -5,17 +5,21 @@ using UnityEngine;
 public class Intro : MonoBehaviour
 {
     public GameObject letterScreen;
-    [SerializeField] private float enterFadeDuration = 5f;
-    public AnimationCurve fadeInCurve;
-    [SerializeField] private float exitFadeDuration = 3f;
-    public AnimationCurve fadeOutCurve;
+
+    [Header("Transitions")]
     public FadeScreen fadeScreen;
+    public Fade fadeIn;
+    public Fade fadeOut;
+
+    private Animator letterScreenAnimator;
 
     static public Intro Instance;
 
     private void Awake()
     {
         Instance = this;
+
+        letterScreenAnimator = letterScreen.GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -28,8 +32,8 @@ public class Intro : MonoBehaviour
     {
         // do fade
         fadeScreen.gameObject.SetActive(true);
-        fadeScreen.StartFade(Color.black, Color.clear, enterFadeDuration, fadeInCurve);
-        yield return new WaitForSeconds(enterFadeDuration);
+        fadeScreen.StartFade(fadeIn.startColor, fadeIn.endColor, fadeIn.duration, fadeIn.fadeCurve);
+        yield return new WaitForSeconds(fadeIn.duration);
         fadeScreen.gameObject.SetActive(false);
     }
     
@@ -37,8 +41,9 @@ public class Intro : MonoBehaviour
     {
         // open letter
         letterScreen.SetActive(true);
+        letterScreenAnimator.Play("Case Form Open");
         // play sound
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
+        // FREEK: playe sound
     }
 
     public void OnCloseLetterButtonClicked()
@@ -48,7 +53,7 @@ public class Intro : MonoBehaviour
         // start pan and zoom animation
         Camera.main.GetComponent<Animator>().Play("Camera Zoom");
         // play sound
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
+        // FREEK: play sound
     }
 
     public void StartExitFade()
@@ -60,8 +65,8 @@ public class Intro : MonoBehaviour
     {
         // do fade
         fadeScreen.gameObject.SetActive(true);
-        fadeScreen.StartFade(Color.clear, Color.black, exitFadeDuration, fadeOutCurve);
-        yield return new WaitForSeconds(exitFadeDuration);
+        fadeScreen.StartFade(fadeOut.startColor, fadeOut.endColor, fadeOut.duration, fadeOut.fadeCurve);
+        yield return new WaitForSeconds(fadeOut.duration);
         // go to pinboard scee
         SceneLoader.Instance.GoToPinBoard();
     }
