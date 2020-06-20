@@ -13,8 +13,6 @@ public class FadeScreen : MonoBehaviour
         fadeScreen = GetComponent<Image>();
     }
     
-    #region Fades
-
     // Without anim curve
 
     public void StartFade(Color oldColor, Color newColor, float duration)
@@ -54,6 +52,4 @@ public class FadeScreen : MonoBehaviour
 
         fadeScreen.color = newColor;
     }
-
-    #endregion
 }

@@ -56,7 +56,7 @@ public class CaseBox : MonoBehaviour
             StopAllCoroutines();
             SetOutlineColor(Color.clear);
             // open letter
-            Intro.Instance.OpenLetter();
+            Intro.Instance.OnCaseBoxClicked();
             hasbeenClicked = true;
             // Play sound
             // Freek: play sound

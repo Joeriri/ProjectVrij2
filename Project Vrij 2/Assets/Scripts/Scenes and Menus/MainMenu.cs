@@ -40,22 +40,18 @@ public class MainMenu : MonoBehaviour
         fadeScreen.gameObject.SetActive(true);
         fadeScreen.StartFade(fadeOut.startColor, fadeOut.endColor, fadeOut.duration, fadeOut.fadeCurve);
         yield return new WaitForSeconds(fadeOut.duration);
-
         // go to intro scene
         SceneLoader.Instance.GoToIntro();
+        // start game music
         Music.setParameterByName("Music Marker", 1);
     }
 
-
     public void OnStartGameButtonPressed()
     {
+        // start fade to intro
         StartCoroutine(FadeOutSequence());
+        // play sound
         FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
-    }
-
-    public void OnSettingsButtonPressed()
-    {
-        SceneLoader.Instance.GoToSettings();
     }
 
     public void OnQuitButtonPressed()

@@ -63,9 +63,11 @@ public class PinBoard : MonoBehaviour
 
     IEnumerator FadeToEnding()
     {
+        // do fade
         fadescreen.gameObject.SetActive(true);
         fadescreen.StartFade(fadeOut.startColor, fadeOut.endColor, fadeOut.duration, fadeOut.fadeCurve);
         yield return new WaitForSeconds(fadeOut.duration);
+        // go to ending scene
         SceneLoader.Instance.GoToEnding();
     }
 }

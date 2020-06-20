@@ -26,23 +26,18 @@ public class Intro : MonoBehaviour
 
     IEnumerator StartFade()
     {
+        // do fade
         fadeScreen.gameObject.SetActive(true);
-
         fadeScreen.StartFade(Color.black, Color.clear, enterFadeDuration, fadeInCurve);
         yield return new WaitForSeconds(enterFadeDuration);
-
         fadeScreen.gameObject.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void OnCaseBoxClicked()
     {
-
-    }
-
-    public void OpenLetter()
-    {
+        // open letter
         letterScreen.SetActive(true);
+        // play sound
         FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
     }
 
@@ -52,7 +47,7 @@ public class Intro : MonoBehaviour
         letterScreen.SetActive(false);
         // start pan and zoom animation
         Camera.main.GetComponent<Animator>().Play("Camera Zoom");
-
+        // play sound
         FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
     }
 
@@ -63,9 +58,11 @@ public class Intro : MonoBehaviour
 
     IEnumerator ExitFade()
     {
+        // do fade
         fadeScreen.gameObject.SetActive(true);
         fadeScreen.StartFade(Color.clear, Color.black, exitFadeDuration, fadeOutCurve);
         yield return new WaitForSeconds(exitFadeDuration);
+        // go to pinboard scee
         SceneLoader.Instance.GoToPinBoard();
     }
 }
