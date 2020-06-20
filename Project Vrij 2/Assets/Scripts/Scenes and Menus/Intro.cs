@@ -11,6 +11,13 @@ public class Intro : MonoBehaviour
     public AnimationCurve fadeOutCurve;
     public FadeScreen fadeScreen;
 
+    static public Intro Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

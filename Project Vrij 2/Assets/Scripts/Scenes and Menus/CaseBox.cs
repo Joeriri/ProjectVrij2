@@ -6,10 +6,7 @@ using UnityEngine.UI;
 public class CaseBox : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
-
-    [Header("Intro")]
-    public Intro intro;
-
+    
     [Header("Outline ANimation")]
     [SerializeField] private Color outlineColor = Color.white;
     //[Range(0f, 1f)] public float outlineAlpha = 1f;
@@ -59,7 +56,7 @@ public class CaseBox : MonoBehaviour
             StopAllCoroutines();
             SetOutlineColor(Color.clear);
             // open letter
-            intro.OpenLetter();
+            Intro.Instance.OpenLetter();
             hasbeenClicked = true;
             // Play sound
             // Freek: play sound

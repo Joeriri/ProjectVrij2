@@ -2,27 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class FadeScreen : MonoBehaviour
 {
     Image fadeScreen;
-
+    
     private void Awake()
     {
         fadeScreen = GetComponent<Image>();
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+    #region Fades
 
     // Without anim curve
 
@@ -63,4 +54,6 @@ public class FadeScreen : MonoBehaviour
 
         fadeScreen.color = newColor;
     }
+
+    #endregion
 }

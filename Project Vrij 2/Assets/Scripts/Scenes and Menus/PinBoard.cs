@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PinBoard : MonoBehaviour
 {
-    public FadeScreen fadescreen;
     public PauseMenu pauseMenu;
 
-    [SerializeField] private float fadeInDuration = 3f;
-    public AnimationCurve fadeInCurve;
-    [SerializeField] private float fadeOutDuration = 5f;
-    public AnimationCurve fadeOutCurve;
+    [Header("Transitions")]
+    public FadeScreen fadescreen;
+    public Fade fadeIn;
+    public Fade fadeOut;
 
     static public PinBoard Instance;
 
@@ -33,8 +32,8 @@ public class PinBoard : MonoBehaviour
         Camera.main.GetComponent<CameraDragMove>().canNavigate = false;
         // fade
         fadescreen.gameObject.SetActive(true);
-        fadescreen.StartFade(Color.black, Color.clear, fadeInDuration, fadeInCurve);
-        yield return new WaitForSeconds(fadeInDuration);
+        fadescreen.StartFade(fadeIn.startColor, fadeIn.endColor, fadeIn.duration, fadeIn.fadeCurve);
+        yield return new WaitForSeconds(fadeIn.duration);
         fadescreen.gameObject.SetActive(false);
         // activate clues, pins and camera navigation
         ClueManager.Instance.SetClueState(Clue.ClueStates.Organize);
@@ -65,8 +64,8 @@ public class PinBoard : MonoBehaviour
     IEnumerator FadeToEnding()
     {
         fadescreen.gameObject.SetActive(true);
-        fadescreen.StartFade(Color.clear, Color.black, fadeOutDuration, fadeOutCurve);
-        yield return new WaitForSeconds(fadeOutDuration);
+        fadescreen.StartFade(fadeOut.startColor, fadeOut.endColor, fadeOut.duration, fadeOut.fadeCurve);
+        yield return new WaitForSeconds(fadeOut.duration);
         SceneLoader.Instance.GoToEnding();
     }
 }

@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class Ending : MonoBehaviour
 {
+    [Header("Transitions")]
     public FadeScreen fadeScreen;
+    public Fade fadeIn;
+    public Fade fadeOut;
+
+    [Header("Animations")]
     public Animator photoAnimator;
     public Animator titleAnimator;
-
-    [SerializeField] private float fadeOutDuration = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartPhotoAppear();
+        StartCoroutine(FadeInSequence());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator FadeInSequence()
     {
-        
+        fadeScreen.StartFade(fadeIn.startColor, fadeIn.endColor, fadeIn.duration, fadeIn.fadeCurve);
+        yield return new WaitForSeconds(fadeIn.duration);
+        StartPhotoAppear();
     }
 
     public void StartPhotoAppear()
@@ -44,8 +48,8 @@ public class Ending : MonoBehaviour
 
     IEnumerator FadeToMenu()
     {
-        fadeScreen.StartFade(Color.clear, Color.black, fadeOutDuration);
-        yield return new WaitForSeconds(fadeOutDuration);
+        fadeScreen.StartFade(fadeOut.startColor, fadeOut.endColor, fadeOut.duration, fadeOut.fadeCurve);
+        yield return new WaitForSeconds(fadeOut.duration);
         SceneLoader.Instance.GoToMainTitle();
     }
 }
