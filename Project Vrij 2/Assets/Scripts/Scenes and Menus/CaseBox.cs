@@ -7,7 +7,7 @@ public class CaseBox : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
     
-    [Header("Outline ANimation")]
+    [Header("Outline Animation")]
     [SerializeField] private Color outlineColor = Color.white;
     [SerializeField] private AnimationCurve outlineAnimationCurve;
     [SerializeField] private float outlineAnimationDuration = 1f;
