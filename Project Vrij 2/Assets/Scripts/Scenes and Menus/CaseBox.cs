@@ -9,11 +9,10 @@ public class CaseBox : MonoBehaviour
     
     [Header("Outline ANimation")]
     [SerializeField] private Color outlineColor = Color.white;
-    //[Range(0f, 1f)] public float outlineAlpha = 1f;
     [SerializeField] private AnimationCurve outlineAnimationCurve;
     [SerializeField] private float outlineAnimationDuration = 1f;
 
-    private bool hasbeenClicked = false;
+    private bool isInteractable = true;
 
     private void Awake()
     {
@@ -26,15 +25,9 @@ public class CaseBox : MonoBehaviour
         StartOutlineAnimation();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnMouseDown()
     {
-        if (!hasbeenClicked)
+        if (isInteractable)
         {
             MouseCursor.Instance.SetCursor("click");
         }
@@ -42,7 +35,7 @@ public class CaseBox : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!hasbeenClicked)
+        if (isInteractable)
         {
             MouseCursor.Instance.SetCursor("point");
         }
@@ -50,14 +43,14 @@ public class CaseBox : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        if (!hasbeenClicked)
+        if (isInteractable)
         {
             // stop outline
             StopAllCoroutines();
             SetOutlineColor(Color.clear);
             // open letter
             Intro.Instance.OnCaseBoxClicked();
-            hasbeenClicked = true;
+            isInteractable = false;
             // Play sound
             // Freek: play sound
 
