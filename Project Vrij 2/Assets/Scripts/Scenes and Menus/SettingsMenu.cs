@@ -12,6 +12,8 @@ public class SettingsMenu : MonoBehaviour
     FMOD.Studio.Bus MusicBus;
     FMOD.Studio.Bus sfxBus;
 
+    static public bool settingsMenuIsOpen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,11 @@ public class SettingsMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // when settings menu is open and ESC is pressed, close menu
+        if (Input.GetKeyDown(KeyCode.Escape) && settingsMenuIsOpen)
+        {
+            CloseSettingsMenu();
+        }
     }
 
     public void SetSFXVolume()
@@ -48,16 +54,22 @@ public class SettingsMenu : MonoBehaviour
 
     public void OpenSettingsMenu()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
+        // open menu
         gameObject.SetActive(true);
+        settingsMenuIsOpen = true;
         // laad opgeslagen audio volume data in de sliders
         musicVolumeSlider.value = Data.instance.musicVolume * musicVolumeSlider.maxValue;
         sfxVolumeSlider.value = Data.instance.sfxVolume * sfxVolumeSlider.maxValue;
+        // play sound
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
     }
 
     public void CloseSettingsMenu()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");  
+        // close menu
         gameObject.SetActive(false);
+        settingsMenuIsOpen = false;
+        // play sound
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
     }
 }

@@ -2,50 +2,81 @@
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public GameObject pauseMenu;
+    public GameObject fadeScreen;
+
     public static bool gameIsPaused;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!gameIsPaused)
+            {
+                // when not paused and not fading, pause
+                if (!fadeScreen.activeInHierarchy && !Tutorial.tutorialScreenIsOpen)
+                    PauseGame();
+            }
+            else
+            {
+                // when paused and settings menu is not open, unpause
+                if (!SettingsMenu.settingsMenuIsOpen)
+                    ResumeGame();
+            }
+        }
     }
 
     public void PauseGame()
     {
         gameIsPaused = true;
         Time.timeScale = 0f;
-        gameObject.SetActive(true);
+        pauseMenu.SetActive(true);
 
-        // de-activate clues, pins and camera navigation
-        ClueManager.Instance.SetClueState(Clue.ClueStates.Frozen);
-        PinManager.Instance.SetPinsInteractable(false);
-        Camera.main.GetComponent<CameraDragMove>().canNavigate = false;
+        if (SceneManager.GetActiveScene().name == "Pinboard")
+        {
+            // de-activate clues, pins and camera navigation
+            PinBoard.Instance.SetBoardInteractable(false);
+        }
+
+        if (SceneManager.GetActiveScene().name == "Intro")
+        {
+            // de-active case box
+            Intro.Instance.caseBox.isInteractable = false;
+        }
     }
 
     public void ResumeGame()
     {
         gameIsPaused = false;
         Time.timeScale = 1f;
-        gameObject.SetActive(false);
+        pauseMenu.SetActive(false);
 
-        // activate clues, pins and camera navigation
-        ClueManager.Instance.SetClueState(Clue.ClueStates.Organize);
-        PinManager.Instance.SetPinsInteractable(true);
-        Camera.main.GetComponent<CameraDragMove>().canNavigate = true;
+        if (SceneManager.GetActiveScene().name == "Pinboard")
+        {
+            // activate clues, pins and camera navigation
+            PinBoard.Instance.SetBoardInteractable(true);
+        }
+
+        if (SceneManager.GetActiveScene().name == "Intro")
+        {
+            // de-active case box
+            Intro.Instance.caseBox.isInteractable = true;
+        }
     }
 
     public void GoBackToMenu()
     {
         ResumeGame();
         SceneLoader.Instance.GoToMainTitle();
+    }
+
+    public void OpenTutorial()
+    {
+        ResumeGame();
+        PinBoard.Instance.tutorialScreen.OpenTutorialScreen();
     }
 }

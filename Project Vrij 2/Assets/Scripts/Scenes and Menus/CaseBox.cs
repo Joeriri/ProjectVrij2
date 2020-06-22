@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class CaseBox : MonoBehaviour
 {
-    SpriteRenderer spriteRenderer;
-    
+    public bool isInteractable = true;
+
     [Header("Outline Animation")]
     [SerializeField] private Color outlineColor = Color.white;
     [SerializeField] private AnimationCurve outlineAnimationCurve;
     [SerializeField] private float outlineAnimationDuration = 1f;
 
-    private bool isInteractable = true;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {

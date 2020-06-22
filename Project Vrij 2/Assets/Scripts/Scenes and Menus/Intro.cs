@@ -5,6 +5,8 @@ using UnityEngine;
 public class Intro : MonoBehaviour
 {
     public GameObject letterScreen;
+    public PauseMenu pauseMenu;
+    public CaseBox caseBox;
 
     [Header("Transitions")]
     public FadeScreen fadeScreen;
@@ -26,6 +28,11 @@ public class Intro : MonoBehaviour
     void Start()
     {
         StartCoroutine(StartFade());
+    }
+
+    private void Update()
+    {
+
     }
 
     IEnumerator StartFade()

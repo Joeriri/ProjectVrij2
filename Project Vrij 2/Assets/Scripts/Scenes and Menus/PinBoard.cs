@@ -5,9 +5,10 @@ using UnityEngine;
 public class PinBoard : MonoBehaviour
 {
     public PauseMenu pauseMenu;
+    public Tutorial tutorialScreen;
 
     [Header("Transitions")]
-    public FadeScreen fadescreen;
+    public FadeScreen fadeScreen;
     public Fade fadeIn;
     public Fade fadeOut;
 
@@ -23,49 +24,40 @@ public class PinBoard : MonoBehaviour
     {
         StartCoroutine(EnterFade());
     }
-
-    IEnumerator EnterFade()
-    {
-        // de-activate clues, pins and camera navigation
-        ClueManager.Instance.SetClueState(Clue.ClueStates.Frozen);
-        PinManager.Instance.SetPinsInteractable(false);
-        Camera.main.GetComponent<CameraDragMove>().canNavigate = false;
-        // fade
-        fadescreen.gameObject.SetActive(true);
-        fadescreen.StartFade(fadeIn.startColor, fadeIn.endColor, fadeIn.duration, fadeIn.fadeCurve);
-        yield return new WaitForSeconds(fadeIn.duration);
-        fadescreen.gameObject.SetActive(false);
-        // activate clues, pins and camera navigation
-        ClueManager.Instance.SetClueState(Clue.ClueStates.Organize);
-        PinManager.Instance.SetPinsInteractable(true);
-        Camera.main.GetComponent<CameraDragMove>().canNavigate = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // Pause / unpause game by pressing Esc
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (!PauseMenu.gameIsPaused)
-                pauseMenu.PauseGame();
-            else
-                pauseMenu.ResumeGame();
-
-            //SceneLoader.Instance.GoToMainTitle();
-        }
-    }
+    
 
     public void WinGame()
     {
         StartCoroutine(FadeToEnding());
     }
 
+    public void SetBoardInteractable(bool isInteractable)
+    {
+        ClueManager.Instance.SetClueState((isInteractable? Clue.ClueStates.Organize : Clue.ClueStates.Frozen));
+        PinManager.Instance.SetPinsInteractable(isInteractable);
+        Camera.main.GetComponent<CameraDragMove>().canNavigate = isInteractable;
+    }
+
+    IEnumerator EnterFade()
+    {
+        // de-activate clues, pins and camera navigation
+        SetBoardInteractable(false);
+        // fade
+        fadeScreen.gameObject.SetActive(true);
+        fadeScreen.StartFade(fadeIn.startColor, fadeIn.endColor, fadeIn.duration, fadeIn.fadeCurve);
+        yield return new WaitForSeconds(fadeIn.duration);
+        fadeScreen.gameObject.SetActive(false);
+        // activate clues, pins and camera navigation
+        SetBoardInteractable(true);
+        // open tutorial
+        tutorialScreen.OpenTutorialScreen();
+    }
+
     IEnumerator FadeToEnding()
     {
         // do fade
-        fadescreen.gameObject.SetActive(true);
-        fadescreen.StartFade(fadeOut.startColor, fadeOut.endColor, fadeOut.duration, fadeOut.fadeCurve);
+        fadeScreen.gameObject.SetActive(true);
+        fadeScreen.StartFade(fadeOut.startColor, fadeOut.endColor, fadeOut.duration, fadeOut.fadeCurve);
         yield return new WaitForSeconds(fadeOut.duration);
         // go to ending scene
         SceneLoader.Instance.GoToEnding();
