@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class Tutorial : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -51,6 +52,7 @@ public class Tutorial : MonoBehaviour
         // hide screen
         gameObject.SetActive(false);
         tutorialScreenIsOpen = false;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
     }
 
     public void GoToNextTutorialStep()
@@ -59,6 +61,7 @@ public class Tutorial : MonoBehaviour
         if (currentStep < tutorialScreens.Length - 1)
         {
             GoToTutorialStep(currentStep + 1);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
         }
     }
 
@@ -68,6 +71,7 @@ public class Tutorial : MonoBehaviour
         if (currentStep > 0)
         {
             GoToTutorialStep(currentStep - 1);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
         }
     }
 

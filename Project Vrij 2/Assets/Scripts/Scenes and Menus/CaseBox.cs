@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class CaseBox : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class CaseBox : MonoBehaviour
             Intro.Instance.OnCaseBoxClicked();
             isInteractable = false;
             // Play sound
-            // Freek: play sound
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Form");
 
             MouseCursor.Instance.SetCursor("point");
         }

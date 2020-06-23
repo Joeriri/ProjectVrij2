@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject fadeScreen;
 
     public static bool gameIsPaused;
-    
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -35,6 +35,7 @@ public class PauseMenu : MonoBehaviour
         gameIsPaused = true;
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
 
         if (SceneManager.GetActiveScene().name == "Pinboard")
         {
@@ -54,6 +55,7 @@ public class PauseMenu : MonoBehaviour
         gameIsPaused = false;
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
 
         if (SceneManager.GetActiveScene().name == "Pinboard")
         {

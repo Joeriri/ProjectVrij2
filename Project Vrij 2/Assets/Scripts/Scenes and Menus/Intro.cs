@@ -43,7 +43,7 @@ public class Intro : MonoBehaviour
         yield return new WaitForSeconds(fadeIn.duration);
         fadeScreen.gameObject.SetActive(false);
     }
-    
+
     public void OnCaseBoxClicked()
     {
         // open letter
@@ -60,7 +60,7 @@ public class Intro : MonoBehaviour
         // start pan and zoom animation
         Camera.main.GetComponent<Animator>().Play("Camera Zoom");
         // play sound
-        // FREEK: play sound
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Form Put Down");
     }
 
     public void StartExitFade()
