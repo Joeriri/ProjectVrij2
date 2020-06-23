@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     public Fade fadeOut;
 
     FMOD.Studio.EventInstance Music;
-    
+
     void Start()
     {
         // when the game launches, do this once and then never again.
