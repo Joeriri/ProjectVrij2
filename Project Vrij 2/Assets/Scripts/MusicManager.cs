@@ -23,6 +23,7 @@ public class MusicManager
     //}
     #endregion
 
+    #region Singleton Pattern
     // keep constructor private
     private MusicManager()
     {
@@ -38,6 +39,7 @@ public class MusicManager
             return _instance;
         }
     }
+    #endregion
 
     public FMOD.Studio.EventInstance Music;
 

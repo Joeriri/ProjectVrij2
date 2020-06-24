@@ -62,4 +62,10 @@ public class PinBoard : MonoBehaviour
         // go to ending scene
         SceneLoader.Instance.GoToEnding();
     }
+
+    public void StartProgressedState()
+    {
+        // start playing progressed music
+        // FREEK: begin hier met spelen van progressed muziek
+    }
 }

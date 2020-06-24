@@ -154,6 +154,16 @@ public class FormManager : MonoBehaviour
             {
                 correctSolveCounter++;
             }
+
+            // if all but one questions have been answered correctly, start playing exciting music
+            if (correctSolveCounter == formQuestions.Count - 1)
+            {
+                // go to progressed 'game state'
+                PinBoard.Instance.StartProgressedState();
+                Debug.Log("Entering Progressed state");
+            }
+
+            // if all questions have been answered correctly, player wins!
             if (correctSolveCounter >= formQuestions.Count)
             {
                 // all questions have been solved. Win the game!
