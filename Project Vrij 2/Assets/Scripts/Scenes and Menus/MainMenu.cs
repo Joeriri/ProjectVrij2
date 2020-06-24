@@ -11,6 +11,13 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        if (!Data.instance.gameHasLaunched)
+        {
+            Data.instance.gameHasLaunched = true;
+            MusicManager.instance.CreateMusicEventInstance();
+            MusicManager.instance.Music.start();
+        }
+
         StartCoroutine(FadeInSequence());
     }
 
