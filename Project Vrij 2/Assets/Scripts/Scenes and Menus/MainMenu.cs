@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FMODUnity;
 
 public class MainMenu : MonoBehaviour
 {
@@ -10,18 +9,8 @@ public class MainMenu : MonoBehaviour
     public Fade fadeIn;
     public Fade fadeOut;
 
-    FMOD.Studio.EventInstance Music;
-
     void Start()
     {
-        // when the game launches, do this once and then never again.
-        if (!Data.instance.gameHasLaunched)
-        {
-            Data.instance.gameHasLaunched = true;
-            Music = FMODUnity.RuntimeManager.CreateInstance("event:/Music");
-            Music.start();
-        }
-
         StartCoroutine(FadeInSequence());
     }
 
@@ -42,8 +31,6 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSeconds(fadeOut.duration);
         // go to intro scene
         SceneLoader.Instance.GoToIntro();
-        // start game music
-        Music.setParameterByName("Music Marker", 1);
     }
 
     public void OnStartGameButtonPressed()
