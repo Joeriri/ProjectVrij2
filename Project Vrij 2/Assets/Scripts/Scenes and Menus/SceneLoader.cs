@@ -2,11 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 public class SceneLoader : MonoBehaviour
 {
     // This lets us make SceneLoader a singleton so we can adres it easily
     public static SceneLoader Instance;
+
+    FMOD.Studio.EventInstance Music;
+
+    void Start()
+    {
+        Music = FMODUnity.RuntimeManager.CreateInstance("event:/Music");
+        if (!Data.instance.gameHasLaunched)
+        {
+            Data.instance.gameHasLaunched = true;
+            Music.start();
+        }
+    }
 
     private void Awake()
     {
@@ -40,11 +53,14 @@ public class SceneLoader : MonoBehaviour
     public void GoToMainTitle()
     {
         LoadScene("MainTitle");
+        Music.setParameterByName("Music Marker", 0f);
     }
 
     public void GoToIntro()
     {
         LoadScene("Intro");
+        // start game music
+        Music.setParameterByName("Music Marker", 1f);
     }
 
     public void GoToPinBoard()
@@ -74,5 +90,5 @@ public class SceneLoader : MonoBehaviour
         Debug.Log("Quitting game");
     }
 
-    
+
 }
