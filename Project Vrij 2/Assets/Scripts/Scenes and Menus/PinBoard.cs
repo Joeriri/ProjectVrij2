@@ -24,7 +24,7 @@ public class PinBoard : MonoBehaviour
     {
         StartCoroutine(EnterFade());
     }
-    
+
 
     public void WinGame()
     {
@@ -66,6 +66,6 @@ public class PinBoard : MonoBehaviour
     public void StartProgressedState()
     {
         // start playing progressed music
-        // FREEK: begin hier met spelen van progressed muziek
+        MusicManager.instance.Music.setParameterByName("Music Marker", 2f);
     }
 }
