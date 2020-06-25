@@ -42,10 +42,12 @@ public class MusicManager
     #endregion
 
     public FMOD.Studio.EventInstance Music;
+    public FMOD.Studio.EventInstance OfficeSfx;
 
     public void CreateMusicEventInstance()
     {
         Music = FMODUnity.RuntimeManager.CreateInstance("event:/Music");
+        OfficeSfx = FMODUnity.RuntimeManager.CreateInstance("event:/Office sfx");
         Debug.Log("Creating Music Event Instance");
     }
 }

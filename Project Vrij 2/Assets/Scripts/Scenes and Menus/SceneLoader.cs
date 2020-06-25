@@ -49,6 +49,7 @@ public class SceneLoader : MonoBehaviour
         LoadScene("Intro");
         // start game music
         MusicManager.instance.Music.setParameterByName("Music Marker", 1f);
+        MusicManager.instance.OfficeSfx.start();
     }
 
     public void GoToPinBoard()

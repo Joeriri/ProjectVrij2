@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{35dbe8cc-4f6a-442c-8c25-9966f3a88939}">
+		<property name="assetPath">
+			<value>SD Deur 2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.7228117913832199</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{55ff583b-3b13-4893-aeab-cd9089037dc6}</destination>
+		</relationship>
+	</object>
+</objects>

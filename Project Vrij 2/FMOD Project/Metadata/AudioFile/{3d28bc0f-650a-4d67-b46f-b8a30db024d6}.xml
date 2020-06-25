@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{3d28bc0f-650a-4d67-b46f-b8a30db024d6}">
+		<property name="assetPath">
+			<value>SD Telefoon 2.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>12.545986394557824</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{55ff583b-3b13-4893-aeab-cd9089037dc6}</destination>
+		</relationship>
+	</object>
+</objects>
