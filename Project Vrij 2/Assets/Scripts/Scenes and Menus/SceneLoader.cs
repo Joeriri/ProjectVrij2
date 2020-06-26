@@ -42,6 +42,7 @@ public class SceneLoader : MonoBehaviour
     {
         LoadScene("MainTitle");
         MusicManager.instance.Music.setParameterByName("Music Marker", 0f);
+        MusicManager.instance.OfficeSfx.setParameterByName("Office SFX", 0f);
     }
 
     public void GoToIntro()
@@ -49,12 +50,13 @@ public class SceneLoader : MonoBehaviour
         LoadScene("Intro");
         // start game music
         MusicManager.instance.Music.setParameterByName("Music Marker", 1f);
-        MusicManager.instance.OfficeSfx.start();
+        MusicManager.instance.OfficeSfx.setParameterByName("Office SFX", 1f);
     }
 
     public void GoToPinBoard()
     {
         LoadScene("PinBoard");
+        MusicManager.instance.Music.setParameterByName("Music Marker", 2f);
     }
 
     public void GoToFoyer()
@@ -65,6 +67,7 @@ public class SceneLoader : MonoBehaviour
     public void GoToEnding()
     {
         LoadScene("Ending");
+        MusicManager.instance.Music.setParameterByName("Music Marker", 5f);
     }
 
     public void GoToSettings()

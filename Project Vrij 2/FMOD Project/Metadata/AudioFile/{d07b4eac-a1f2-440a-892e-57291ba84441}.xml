@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{d07b4eac-a1f2-440a-892e-57291ba84441}">
+		<property name="assetPath">
+			<value>Alleen violen.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>190.38460317460317</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{55ff583b-3b13-4893-aeab-cd9089037dc6}</destination>
+		</relationship>
+	</object>
+</objects>

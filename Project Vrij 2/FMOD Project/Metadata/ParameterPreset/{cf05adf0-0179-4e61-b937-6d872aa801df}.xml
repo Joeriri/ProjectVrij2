@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{cf05adf0-0179-4e61-b937-6d872aa801df}">
+		<property name="name">
+			<value>Office SFX</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0e39b9fa-aa35-4e35-87f1-c0a6a60a2356}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{1dc9bc51-bef9-422c-b3ed-65e356378bff}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{1dc9bc51-bef9-422c-b3ed-65e356378bff}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Value A</value>
+			<value>Value B</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

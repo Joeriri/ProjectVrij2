@@ -74,7 +74,6 @@ public class PauseMenu : MonoBehaviour
     {
         ResumeGame();
         SceneLoader.Instance.GoToMainTitle();
-        MusicManager.instance.OfficeSfx.release();
     }
 
     public void OpenTutorial()

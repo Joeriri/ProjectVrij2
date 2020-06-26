@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
             Data.instance.gameHasLaunched = true;
             MusicManager.instance.CreateMusicEventInstance();
             MusicManager.instance.Music.start();
+            MusicManager.instance.OfficeSfx.start();
         }
 
         StartCoroutine(FadeInSequence());
