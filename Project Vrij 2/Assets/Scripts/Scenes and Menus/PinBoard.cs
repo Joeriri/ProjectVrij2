@@ -66,6 +66,6 @@ public class PinBoard : MonoBehaviour
     public void StartProgressedState()
     {
         // start playing progressed music
-        MusicManager.instance.Music.setParameterByName("Music Marker", 2f);
+        MusicManager.instance.Music.setParameterByName("Music Marker", 3f);
     }
 }

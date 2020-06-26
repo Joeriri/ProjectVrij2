@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{d6df0033-a238-4959-abc0-61abddce54b9}">
+		<property name="name">
+			<value>Violin Transition</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0e39b9fa-aa35-4e35-87f1-c0a6a60a2356}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{7ed01250-5e5c-49cc-a99b-fa5576e8c8e9}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{7ed01250-5e5c-49cc-a99b-fa5576e8c8e9}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Value A</value>
+			<value>Value B</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
