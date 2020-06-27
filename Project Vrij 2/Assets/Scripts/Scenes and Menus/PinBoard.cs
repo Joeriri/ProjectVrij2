@@ -74,12 +74,12 @@ public class PinBoard : MonoBehaviour
         if (questionsAnswered == 1)
         {
             // start playing progressed music
-            MusicManager.instance.Music.setParameterByName("Music Marker", 4f);
+            MusicManager.instance.Music.setParameterByName("Music Marker", 3f);
         }
         // 2 vragen zijn beantwoord
         else if (questionsAnswered == 2)
         {
-
+            MusicManager.instance.Music.setParameterByName("Music Marker", 4f);
         }
     }
 }
