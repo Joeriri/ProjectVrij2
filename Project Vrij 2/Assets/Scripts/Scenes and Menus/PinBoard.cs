@@ -63,9 +63,23 @@ public class PinBoard : MonoBehaviour
         SceneLoader.Instance.GoToEnding();
     }
 
-    public void StartProgressedState()
+    public void OnGameProgression(int questionsAnswered)
     {
-        // start playing progressed music
-        MusicManager.instance.Music.setParameterByName("Music Marker", 4f);
+        // NOTE: de speler kan ook teruggaan met de hoeveelheid goed beantwoorde vragen (als de speler een goed beantwoorde vraag opnieuw beantwoord maar dan met foute evidence).
+        // Het is onlogisch dat de speler dat zou doen, maar onthoudt dat het mogelijk is dat de muziek naar een vorige stage (bvb van 2 terug naar 1) terug kan gaan.
+
+        Debug.Log("Progressed state is now" + questionsAnswered.ToString());
+
+        // 1 vraag is beantwoord
+        if (questionsAnswered == 1)
+        {
+            // start playing progressed music
+            MusicManager.instance.Music.setParameterByName("Music Marker", 4f);
+        }
+        // 2 vragen zijn beantwoord
+        else if (questionsAnswered == 2)
+        {
+
+        }
     }
 }

@@ -14,11 +14,12 @@ public class FormManager : MonoBehaviour
     [SerializeField] private float questionBoxSpacing = 1f;
     public CaseQuestion[] caseQuestions;
 
+    public FormQuestion currentQuestion;
+
     private Button pinButton;
     private Button formButton;
     private Animator formScreenAnimator;
 
-    public FormQuestion currentQuestion;
 
     List<FormQuestion> formQuestions = new List<FormQuestion>();
 
@@ -155,13 +156,8 @@ public class FormManager : MonoBehaviour
                 correctSolveCounter++;
             }
 
-            // if all but one questions have been answered correctly, start playing exciting music
-            if (correctSolveCounter == formQuestions.Count - 1)
-            {
-                // go to progressed 'game state'
-                PinBoard.Instance.StartProgressedState();
-                Debug.Log("Entering Progressed state");
-            }
+            // let Pinboard know how many questions have been solved
+            PinBoard.Instance.OnGameProgression(correctSolveCounter);
 
             // if all questions have been answered correctly, player wins!
             if (correctSolveCounter >= formQuestions.Count)
