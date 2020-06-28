@@ -11,6 +11,8 @@ public class Tutorial : MonoBehaviour
 
     public static bool tutorialScreenIsOpen;
 
+    private bool firstTime = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +55,13 @@ public class Tutorial : MonoBehaviour
         gameObject.SetActive(false);
         tutorialScreenIsOpen = false;
         FMODUnity.RuntimeManager.PlayOneShot("event:/Click");
+
+        // de eerste keer dat de tutorial sluit, open de form.
+        if (firstTime)
+        {
+            firstTime = false;
+            FormManager.Instance.OpenForm();
+        }
     }
 
     public void GoToNextTutorialStep()
