@@ -6737,7 +6737,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Click on any clue to see them up-close.
+  m_Text: Click on any clue to see them up close.
 --- !u!222 &692427237
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8436,7 +8436,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Make connections between important clues. Then answer the Case Questions
-    by selecting one or multiple threads that proof your theory. Answer all questions
+    by selecting one or multiple threads that prove your theory. Answer all questions
     to solve the case!
 --- !u!222 &957873758
 CanvasRenderer:

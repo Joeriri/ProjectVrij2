@@ -17,6 +17,23 @@ MonoBehaviour:
   Max: 2
   Default: 0
   Exists: 0
+--- !u!114 &-9076428193667193573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/Music Marker
+  m_EditorClassIdentifier: 
+  Name: Music Marker
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 1
 --- !u!114 &-8852885983496733668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: FMOD Project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637288824900000000
+  lastModified: 637288506394154477
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -105,7 +122,7 @@ MonoBehaviour:
   Path: event:/Dubious
   guid: 500be16992fbe64ca1b708160c2e21c1
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -146,7 +163,7 @@ MonoBehaviour:
   Path: event:/Form
   guid: 4f67f275050a0b4faf081a4bf13a2807
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -225,6 +242,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-7069914436044878454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD Project/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637289717650577799
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-6766645281233541030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +293,7 @@ MonoBehaviour:
   Path: event:/Wulfgang
   guid: 18fb00890fa38044a16330dfc1e303f9
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -333,7 +368,7 @@ MonoBehaviour:
   Path: event:/Twins
   guid: 8d294f1d7fea5d4287b6005d2f353144
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -356,7 +391,7 @@ MonoBehaviour:
   Path: event:/Pin Bin
   guid: 52153ccfdfc79643ade986676c0cf5ad
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -397,7 +432,7 @@ MonoBehaviour:
   Path: event:/Clue
   guid: 278e1ad6a43189499cc644d6038db07c
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -473,7 +508,7 @@ MonoBehaviour:
   Path: event:/Cornelius
   guid: f321bac95bdf9d4188f9a88762b315b6
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -496,12 +531,12 @@ MonoBehaviour:
   Path: event:/Music
   guid: 9687162b308ab241b04a15057f7709b8
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -2113127266262551773}
+  - {fileID: -9076428193667193573}
   MinDistance: 0
   MaxDistance: 0
   Length: 835961
@@ -575,7 +610,7 @@ MonoBehaviour:
   lastModified: 637288824900000000
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-3367700124614296787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,7 +661,7 @@ MonoBehaviour:
   Path: event:/Omar
   guid: 28123a061332854f92271db5bb893b5b
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -667,12 +702,12 @@ MonoBehaviour:
   Path: event:/Office sfx
   guid: c47175a527daf64b87576f19d7d04ca6
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: -2537067859497463417}
+  - {fileID: -587802148429987694}
   MinDistance: 0
   MaxDistance: 0
   Length: 7000
@@ -692,7 +727,7 @@ MonoBehaviour:
   Min: 0
   Max: 2
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-2352648526967614575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,7 +761,7 @@ MonoBehaviour:
   Min: 0
   Max: 6
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-2034584257441578479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,6 +852,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-587802148429987694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Office sfx/Office SFX
+  m_EditorClassIdentifier: 
+  Name: Office SFX
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
 --- !u!114 &-582020532454977804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -866,7 +918,7 @@ MonoBehaviour:
   Path: event:/Diane
   guid: 5296f33afc1bc74e92ad63c717cbbef6
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -888,7 +940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -8852885983496733668}
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   EditorEvents:
   - {fileID: -4810250890280219560}
   - {fileID: -7944579401812871305}
@@ -910,10 +962,10 @@ MonoBehaviour:
   - {fileID: -2545409874303329353}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   StringsBanks:
   - {fileID: -8852885983496733668}
-  stringsBankWriteTime: 637288824900000000
+  stringsBankWriteTime: 637288506394154477
   cacheVersion: 3
 --- !u!114 &585617101306239459
 MonoBehaviour:
@@ -1000,7 +1052,7 @@ MonoBehaviour:
   Path: event:/Form Put Down
   guid: 09d322f75d63b641a10085a439a11a66
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1023,7 +1075,7 @@ MonoBehaviour:
   Path: event:/Clue Put Down
   guid: fec1c23bdbc9f142891d12a2a5d7334a
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1132,7 +1184,7 @@ MonoBehaviour:
   Path: event:/Click
   guid: aeaab721fe04924a8b2db0f02b536f64
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1397,7 +1449,7 @@ MonoBehaviour:
   Path: event:/Click 2
   guid: fea0e99d20164c4389237dafcc806145
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1472,7 +1524,7 @@ MonoBehaviour:
   Path: event:/Thread Click
   guid: d269a036d8bf4d4083cd8fdc23f0f7fa
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1548,7 +1600,7 @@ MonoBehaviour:
   Path: event:/Isabelle
   guid: 8f7067ec7965264fa7c46c34335bd044
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1762,7 +1814,7 @@ MonoBehaviour:
   Path: event:/Pin
   guid: a6c2209c1f833b41beb30c7f6f365cbc
   Banks:
-  - {fileID: -3485054335657507887}
+  - {fileID: -7069914436044878454}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
